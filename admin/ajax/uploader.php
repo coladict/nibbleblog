@@ -25,15 +25,15 @@ if ($filename) {
 	// Ext
 	$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-	if (($ext != 'jpg') && ($ext != 'jpeg') && ( $ext != 'gif' ) && ($ext != 'png')) {
-		exit(json_encode(array('status'=>0, 'msg'=>'Extension error')));
+	if (($ext != 'jpg') && ($ext != 'jpeg') && ($ext != 'gif') && ($ext != 'png')) {
+		exit(json_encode(array('status' => 0, 'msg' => 'Extension error')));
 	}
 
 	// Stream
 	$content = file_get_contents("php://input");
 
 	if ($content == false) {
-		exit(json_encode(array('status'=>0, 'msg'=>'Streaming error')));
+		exit(json_encode(array('status' => 0, 'msg' => 'Streaming error')));
 	}
 
 	$filename = strtolower(pathinfo($filename, PATHINFO_FILENAME));

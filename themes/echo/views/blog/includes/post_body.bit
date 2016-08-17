@@ -24,7 +24,7 @@ if (!empty($post['tags'])) {
 		$tags[$key] = '<a class="tag" href="' . Url::tag($tag['name']) . '">' . $tag['name_human'] . '</a>';
 	}
 
-	$tags = implode(', ',$tags);
+	$tags = implode(', ', $tags);
 
 	echo '<ul class="tags">';
 		echo '<li><b>Tags</b>:&nbsp;</li>';

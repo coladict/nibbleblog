@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Polski - Polski',
-	'english'=>'Polish',
-	'last_update'=>'2014-03-20',
-	'author'=>'kaaleth',
-	'email'=>'dawid.stawicki@windowslive.com',
-	'url'=>''
+	'native' => 'Polski - Polski',
+	'english' => 'Polish',
+	'last_update' => '2014-03-20',
+	'author' => 'kaaleth',
+	'email' => 'dawid.stawicki@windowslive.com',
+	'url' => ''
 );
 
 $_LANG['LAST_COMMENTS'] = 'Ostatnie komentarze';

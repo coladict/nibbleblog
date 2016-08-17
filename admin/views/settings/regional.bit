@@ -53,8 +53,8 @@ $(document).ready(function() {
 
 	$("#js_language").change(function () {
 		var locale = $("#js_language option:selected").val();
-		$("#js_locale").attr("value",locale);
-		setTimeout("location.reload()",8000);
+		$("#js_locale").attr("value", locale);
+		setTimeout("location.reload()", 8000);
 	});
 
 	$("#js_timestamp_select").change(function () {

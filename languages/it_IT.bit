@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Italiano - Italiano',
-	'english'=>'Italian',
-	'last_update'=>'02/02/2014',
-	'author'=>'Giacomo Margarito',
-	'email'=>'giacomomargarito@gmail.com',
-	'url'=>'http://www.freewaresnews.it'
+	'native' => 'Italiano - Italiano',
+	'english' => 'Italian',
+	'last_update' => '02/02/2014',
+	'author' => 'Giacomo Margarito',
+	'email' => 'giacomomargarito@gmail.com',
+	'url' => 'http://www.freewaresnews.it'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Ultimi commenti';

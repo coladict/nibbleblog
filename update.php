@@ -36,7 +36,7 @@ require(PATH_HELPERS . 'filesystem.class.php');
 // =====================================================================
 // DB
 // =====================================================================
-$_DB_SETTINGS	= new DB_SETTINGS( FILE_XML_CONFIG );
+$_DB_SETTINGS	= new DB_SETTINGS(FILE_XML_CONFIG);
 
 // =====================================================================
 // Variables
@@ -68,7 +68,7 @@ $translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Nibbleblog Updater <?php echo UPDATER_VERSION ?></title>
+	<title>Nibbleblog Updater <?php echo UPDATER_VERSION; ?></title>
 
 	<style type="text/css">
 		body {
@@ -132,7 +132,7 @@ $translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;
 
 		<header id="head">
 			<?php
-				echo Html::h1(array('content'=>$_LANG['WELCOME_TO_NIBBLEBLOG']));
+				echo Html::h1(array('content' => $_LANG['WELCOME_TO_NIBBLEBLOG']));
 			?>
 		</header>
 
@@ -162,12 +162,12 @@ $translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;
 					$obj = new NBXML($filenamepost, 0, TRUE, '', FALSE);
 					add_if_not($obj , 'friendly' , '');
 
-					if ($obj->asXml( FILE_XML_POSTS )) {
-						echo Html::p(array('class' => 'pass', 'content' => 'DB updated: ' . FILE_XML_POSTS) );
+					if ($obj->asXml(FILE_XML_POSTS)) {
+						echo Html::p(array('class' => 'pass', 'content' => 'DB updated: ' . FILE_XML_POSTS));
 						@unlink($filenamepost);
 					}
 					else {
-						echo Html::p(array('class' => 'pass', 'content' => 'FAIL - DB updated: ' . FILE_XML_POSTS) );
+						echo Html::p(array('class' => 'pass', 'content' => 'FAIL - DB updated: ' . FILE_XML_POSTS));
 					}
 				}
 
@@ -217,7 +217,7 @@ $translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;
 					$obj = new NBXML($xml, 0, FALSE, '', FALSE);
 					$obj->asXml(FILE_XML_NOTIFICATIONS);
 
-					echo Html::p(array('class'=>'pass', 'content'=>'File created: ' . FILE_XML_NOTIFICATIONS));
+					echo Html::p(array('class' => 'pass', 'content' => 'File created: ' . FILE_XML_NOTIFICATIONS));
 				}
 
 				// =====================================================

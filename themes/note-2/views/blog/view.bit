@@ -17,7 +17,7 @@ else {
 				echo '<h2>' . $_LANG['QUOTE'] . '</h2>';
 			}
 			?>
-				
+
 			<h2><?php echo Post::title(); ?></h2>
 			<span class="meta"><?php echo Post::published(); ?></span>
 		</a>

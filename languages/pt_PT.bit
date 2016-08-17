@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Português - Português',
-	'english'=>'Portuguese',
-	'last_update'=>'02/02/2014',
-	'author'=>'Paulo Nunes',
-	'email'=>'syndicatefx@gmail.com',
-	'url'=>'http://syndicatefx.com'
+	'native' => 'Português - Português',
+	'english' => 'Portuguese',
+	'last_update' => '02/02/2014',
+	'author' => 'Paulo Nunes',
+	'email' => 'syndicatefx@gmail.com',
+	'url' => 'http://syndicatefx.com'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Últimos comentários';

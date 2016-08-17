@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Nederlands',
-	'english'=>'Dutch',
-	'last_update'=>'2014-03-16',
-	'author'=>'Lynda',
-	'email'=>'berichtenvoor@gmail.com',
-	'url'=>'http://inforijker.nl'
+	'native' => 'Nederlands',
+	'english' => 'Dutch',
+	'last_update' => '2014-03-16',
+	'author' => 'Lynda',
+	'email' => 'berichtenvoor@gmail.com',
+	'url' => 'http://inforijker.nl'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Laatste reacties';

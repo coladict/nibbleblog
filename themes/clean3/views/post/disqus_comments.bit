@@ -1,19 +1,18 @@
 <?php
 
 // If Disqus comment enabled, then add the follow script
-if( $Comment->disqus_enabled() )
-{
+if ($Comment->disqus_enabled()) {
 
 ?>
 
 <section id="comments">
 
-	<h2><?php echo $Language->get('Comments') ?></h2>
+	<h2><?php echo $Language->get('Comments'); ?></h2>
 
 	<div id="disqus_thread"></div>
 
 	<script type="text/javascript">
-		var disqus_shortname = "<?php echo $Comment->disqus_shortname() ?>";
+		var disqus_shortname = "<?php echo $Comment->disqus_shortname(); ?>";
 
 		(function() {
 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -31,5 +30,3 @@ if( $Comment->disqus_enabled() )
 <?php
 
 }
-
-?>

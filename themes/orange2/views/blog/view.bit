@@ -1,12 +1,10 @@
 <?php
 
 // There are no posts
-if(empty($posts))
-{
-	echo '<p>'.$Language->get('there are no posts').'</p>';
+if (empty($posts)) {
+	echo '<p>' . $Language->get('there are no posts') . '</p>';
 }
-else
-{
+else {
 	// Disqus comments
 	include('disqus_comments.bit');
 
@@ -14,8 +12,7 @@ else
 	include('facebook_comments.bit');
 
 	// Print each post
-	foreach($posts as $post)
-	{
+	foreach ($posts as $post) {
 		// Include the post template for each post
 		include('post.bit');
 	}
@@ -23,5 +20,3 @@ else
 
 // Blog pager
 include('pager.bit');
-
-?>

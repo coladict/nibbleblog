@@ -45,7 +45,7 @@ PUBLIC METHODS
 		$tmp_node = $this->xml->xpath('/categories/category[@name="' . utf8_encode($args['name']) . '"]');
 
 		if ($tmp_node == array()) {
-			$new_node = $this->xml->addChild('category','');
+			$new_node = $this->xml->addChild('category', '');
 			$new_node->addAttribute('id', $this->get_autoinc());
 			$new_node->addAttribute('name', $args['name']);
 			$new_node->addAttribute('slug', $args['slug']);

@@ -4,13 +4,10 @@
 include('post.bit');
 
 // If post allow comments
-if(Post::allow_comments())
-{
+if (Post::allow_comments()) {
 	include('disqus_comments.bit');
 
 	include('facebook_comments.bit');
 
 	include('nibbleblog_comments.bit');
 }
-
-?>

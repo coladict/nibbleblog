@@ -44,4 +44,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Set hash comment
-$Comment->set_form('hash', Crypt::get_hash(time(),time()));
+$Comment->set_form('hash', Crypt::get_hash(time(), time()));

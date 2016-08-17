@@ -41,7 +41,7 @@ class Text {
 	}
 
 	public static function cut_text($text, $maxlength) {
-		return(substr($text,0,strrpos(substr($text,0,$maxlength)," ")));
+		return(substr($text, 0, strrpos(substr($text, 0, $maxlength), " ")));
 	}
 
 	public static function cut_words($text, $count) {
@@ -57,12 +57,12 @@ class Text {
 
 	// Strip spaces
 	public static function replace($search, $replace, $string) {
-		return(str_replace($search,$replace,$string));
+		return(str_replace($search, $replace, $string));
 	}
 
 	// Strip spaces
 	public static function strip_spaces($string) {
-		return(str_replace(' ','',$string));
+		return(str_replace(' ', '', $string));
 	}
 
 	// Strip quotes ' and "
@@ -111,7 +111,7 @@ class Text {
 
 		// Translit
 		if ($translit != false) {
-			$text = str_replace(array_keys($translit),array_values($translit),$text);
+			$text = str_replace(array_keys($translit), array_values($translit), $text);
 		}
 		if (function_exists('iconv')) {
 			$ret = iconv('utf-8', 'us-ascii//TRANSLIT//IGNORE', $text);
@@ -121,7 +121,7 @@ class Text {
 		}
 
 		// Replace spaces by $spaces
-		$text = str_replace(' ',$spaces,$text);
+		$text = str_replace(' ', $spaces, $text);
 
 		//remove any additional characters that might appear after translit
 		$text = preg_replace('![^-\w]+!', '', $text);
@@ -147,7 +147,7 @@ class Text {
 		$characteres = "1234567890abcdefghijklmnopqrstuvwxyz!@#%^&*";
 		$text = '';
 		for ($i=0; $i<$length; $i++) {
-			$text .= $characteres{rand(0,41)};
+			$text .= $characteres{rand(0, 41)};
 		}
 		return $text;
 	}

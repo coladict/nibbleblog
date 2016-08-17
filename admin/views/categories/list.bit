@@ -81,7 +81,7 @@ $(document).ready(function() {
 		else {
 			self.attr("data-flag", "1");
 			self.html(<?php echo json_encode($_LANG['ARE_YOU_SURE'], JSON_HEX_TAG); ?>);
-			self.css("color","red");
+			self.css("color", "red");
 		}
 	});
 

@@ -15,8 +15,8 @@ include('nb_code.bit');
 
 ?>
 
-<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/jquery.tinymce.min.js' ?>"></script>
-<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/tinymce.min.js' ?>"></script>
+<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/jquery.tinymce.min.js'; ?>"></script>
+<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/tinymce.min.js'; ?>"></script>
 
 <script>
 
@@ -45,7 +45,12 @@ $(document).ready(function() {
 			{title : 'Preformatted', block : 'pre'},
 			{title : 'Console', block : 'pre', classes: 'nb-console'}
 		],
-		<?php if (file_exists(PATH_ADMIN_JS . 'tinymce/langs/' . $settings['locale'] . '.js')) echo 'language : "' . $settings['locale'] . '",' ?>
+		<?php
+		if (file_exists(PATH_ADMIN_JS . 'tinymce/langs/' . $settings['locale'] . '.js')) {
+			echo 'language : "' . $settings['locale'] . '",'
+					
+		}
+		?>
 		statusbar: false,
 		menubar:false,
 		resize: false,

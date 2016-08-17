@@ -167,8 +167,8 @@ class Defensio {
 		}
 
 		if (!isset($result_object) ||
-				(isset($result_object) && !in_array($result_object->status, array('success', 'pending'))) &&
-				$throw_on_failure ) {
+				(isset($result_object) && !in_array($result_object->status, array('success', 'pending')))
+				&& $throw_on_failure) {
 
 			$msg = "Unknown reason";
 			if (is_object($result_object) && !empty($result_object->message)) {

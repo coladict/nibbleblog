@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Català',
-	'english'=>'Catalan',
-	'last_update'=>'21/05/2014',
-	'author'=>'Sergi Duran',
-	'email'=>'sergidurannyssen@gmail.com',
-	'url'=>'http://sokvist.com/'
+	'native' => 'Català',
+	'english' => 'Catalan',
+	'last_update' => '21/05/2014',
+	'author' => 'Sergi Duran',
+	'email' => 'sergidurannyssen@gmail.com',
+	'url' => 'http://sokvist.com/'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Últims comentaris';

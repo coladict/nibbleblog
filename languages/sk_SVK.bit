@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Slovak - Slovak',
-	'slovak'=>'Slovak',
-	'last_update'=>'20/02/2013',
-	'author'=>'Tomas Pal',
-	'email'=>'pal@artful.sk',
-	'url'=>'http://www.artful.sk'
+	'native' => 'Slovak - Slovak',
+	'slovak' => 'Slovak',
+	'last_update' => '20/02/2013',
+	'author' => 'Tomas Pal',
+	'email' => 'pal@artful.sk',
+	'url' => 'http://www.artful.sk'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Posledný koment';

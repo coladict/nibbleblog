@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'繁體中文',
-	'english'=>'Chinese Traditional',
-	'last_update'=>'02/02/2014',
-	'author'=>'Ethan',
-	'email'=>'ethan42411@gmail.com',
-	'url'=>'http://ethan42411.twbbs.org/'
+	'native' => '繁體中文',
+	'english' => 'Chinese Traditional',
+	'last_update' => '02/02/2014',
+	'author' => 'Ethan',
+	'email' => 'ethan42411@gmail.com',
+	'url' => 'http://ethan42411.twbbs.org/'
 );
 
 $_LANG['LAST_COMMENTS'] = '最新回應';

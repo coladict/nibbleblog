@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 <?php
 	// Charset, title, description, keywords, robots, etc
@@ -28,10 +28,10 @@
 <!-- HEADER -->
 <header id="head">
 	<div class="wrap">
-		<a class="name" href="<?php echo Blog::url() ?>">
-			<?php echo Blog::name() ?>
+		<a class="name" href="<?php echo Blog::url(); ?>">
+			<?php echo Blog::name(); ?>
 			<span class="slogan">
-				<?php echo Blog::slogan() ?>
+				<?php echo Blog::slogan(); ?>
 			</span>
 		</a>
 	</div>
@@ -67,9 +67,9 @@
 
 	<!-- FOOTER -->
 	<footer id="foot">
-		<span class="blog-atom"><a href="<?php echo $layout['feed'] ?>">Atom</a></span>
+		<span class="blog-atom"><a href="<?php echo $layout['feed']; ?>">Atom</a></span>
 		<span class="blog-footer"> · <a class="top" href="#">Top</a></span>
-		<span class="blog-footer"> · <?php echo Blog::footer() ?></span>
+		<span class="blog-footer"> · <?php echo Blog::footer(); ?></span>
 		<script>
 		$(".top").click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 600);

@@ -1,15 +1,12 @@
 <?php
 
 // If there are no posts
-if(empty($posts))
-{
-	echo '<p>'.$_LANG['THERE_ARE_NO_POSTS'].'</p>';
+if (empty($posts)) {
+	echo '<p>' . $_LANG['THERE_ARE_NO_POSTS'] . '</p>';
 }
-else
-{
+else {
 	// Show posts
-	foreach($posts as $post)
-	{
+	foreach ($posts as $post) {
 		echo '<article class="post">';
 
 			include('includes/post_view.bit');
@@ -20,5 +17,3 @@ else
 
 // Include the pager
 include('includes/pager.bit');
-
-?>

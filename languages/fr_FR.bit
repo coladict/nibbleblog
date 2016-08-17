@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Français - Français',
-	'english'=>'French',
-	'last_update'=>'10/02/2014',
-	'author'=>'benoit',
-	'email'=>'contact@bencharp.com',
-	'url'=>'http://www.bencharp.com'
+	'native' => 'Français - Français',
+	'english' => 'French',
+	'last_update' => '10/02/2014',
+	'author' => 'benoit',
+	'email' => 'contact@bencharp.com',
+	'url' => 'http://www.bencharp.com'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Derniers commentaires';

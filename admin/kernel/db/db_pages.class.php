@@ -164,7 +164,7 @@ class DB_PAGES {
 		$filename = implode('.', $file);
 
 		// Delete the old page
-		if ($this->delete(array('id'=>$args['id']))) {
+		if ($this->delete(array('id' => $args['id']))) {
 			// Slug
 			$slug = $this->slug_generator($args['slug']);
 			$this->slug_add($args['id'], $slug);

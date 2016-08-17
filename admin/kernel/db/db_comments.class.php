@@ -169,7 +169,7 @@ PUBLIC METHODS
 		$this->set_file($args['id']);
 
 		if ($this->files_count > 0) {
-			return(unlink(PATH_COMMENTS . $this->files[0] ));
+			return(unlink(PATH_COMMENTS . $this->files[0]));
 		}
 
 		return(false);

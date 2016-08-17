@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Español - Español',
-	'english'=>'Spanish',
-	'last_update'=>'02/02/2014',
-	'author'=>'Diego Najar',
-	'email'=>'dignajar@gmail.com',
-	'url'=>'http://diego.nibbleblog.com'
+	'native' => 'Español - Español',
+	'english' => 'Spanish',
+	'last_update' => '02/02/2014',
+	'author' => 'Diego Najar',
+	'email' => 'dignajar@gmail.com',
+	'url' => 'http://diego.nibbleblog.com'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Últimos comentarios';

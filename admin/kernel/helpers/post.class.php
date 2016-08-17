@@ -27,7 +27,7 @@ class Post {
 		global $post;
 		global $_DB_COMMENTS;
 
-		$comments = $_DB_COMMENTS->get_list_by_post(array('id_post'=>$post['id']));
+		$comments = $_DB_COMMENTS->get_list_by_post(array('id_post' => $post['id']));
 
 		return $comments;
 	}
@@ -42,7 +42,7 @@ class Post {
 		global $post;
 		global $_DB_CATEGORIES;
 
-		$category = $_DB_CATEGORIES->get(array('id'=>$post['id_cat']));
+		$category = $_DB_CATEGORIES->get(array('id' => $post['id_cat']));
 
 		if ($field == 'id') {
 			return $category['id'];
@@ -74,14 +74,14 @@ class Post {
 	public static function permalink($absolute = false) {
 		global $post;
 
-		return Url::post($post,$absolute);
+		return Url::post($post, $absolute);
 	}
 
 	public static function tags($return2array = false) {
 		global $post;
 		global $_DB_TAGS;
 
-		$tags = $_DB_TAGS->get_by_idpost(array('id_post'=>$post['id']));
+		$tags = $_DB_TAGS->get_by_idpost(array('id_post' => $post['id']));
 
 		if ($return2array) {
 			return $tags;

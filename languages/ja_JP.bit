@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'日本語',
-	'english'=>'Japanese',
-	'last_update'=>'12/12/2014',
-	'author'=>'Jun NOGATA',
-	'email'=>'nogajun@gmail.com',
-	'url'=>'http://www.nofuture.tv'
+	'native' => '日本語',
+	'english' => 'Japanese',
+	'last_update' => '12/12/2014',
+	'author' => 'Jun NOGATA',
+	'email' => 'nogajun@gmail.com',
+	'url' => 'http://www.nofuture.tv'
 );
 
 $_LANG['LAST_COMMENTS'] = '最終コメント';

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 	<meta http-equiv="cleartype" content="on">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -35,7 +35,7 @@
 				include(THEME_VIEWS . $layout['view']);
 			?>
 			<footer>
-				<p><a href="<?php echo $layout['feed'] ?>">Atom</a></p>
+				<p><a href="<?php echo $layout['feed']; ?>">Atom</a></p>
 				<p><?php echo Blog::footer(); ?></p>
 			</footer>
 		</div>

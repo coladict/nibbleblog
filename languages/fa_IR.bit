@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Farsi(فارسی) - Iran',
-	'farsi'=>'Farsi',
-	'last_update'=>'12/22/2014',
-	'author'=>'Pooya Parsa Dadashi',
-	'email'=>'Pooya_parsa_dadashi@yahoo.com',
-	'url'=>'http://www.datamweb.ir'
+	'native' => 'Farsi(فارسی) - Iran',
+	'farsi' => 'Farsi',
+	'last_update' => '12/22/2014',
+	'author' => 'Pooya Parsa Dadashi',
+	'email' => 'Pooya_parsa_dadashi@yahoo.com',
+	'url' => 'http://www.datamweb.ir'
 );
 $_LANG['LAST_COMMENTS'] = 'آخرین نظرات';
 $_LANG['THEME'] = 'قالب';

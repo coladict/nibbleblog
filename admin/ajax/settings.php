@@ -6,7 +6,7 @@ require('security.bit');
 if ($_POST['action'] == 'set') {
 	$data = Text::unserialize($_POST['serial_data']);
 
-	foreach ($data as $name=>$value) {
+	foreach ($data as $name => $value) {
 		$safe[$name] = Validation::sanitize_html($value);
 	}
 

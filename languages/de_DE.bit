@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Deutsch - Deutsch',
-	'english'=>'German',
-	'last_update'=>'02/02/2014',
-	'author'=>'Daniel Randazzo',
-	'email'=>'kontakt@pc-repariert.de',
-	'url'=>'http://pc-repariert.de'
+	'native' => 'Deutsch - Deutsch',
+	'english' => 'German',
+	'last_update' => '02/02/2014',
+	'author' => 'Daniel Randazzo',
+	'email' => 'kontakt@pc-repariert.de',
+	'url' => 'http://pc-repariert.de'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Neueste Kommentare';

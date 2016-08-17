@@ -27,7 +27,7 @@ class Net {
 	public static function check_http_code($url, $code) {
 		if (in_array('curl', get_loaded_extensions())) {
 			$curl = curl_init();
-			curl_setopt_array($curl, array(CURLOPT_RETURNTRANSFER=>true, CURLOPT_URL=>$url));
+			curl_setopt_array($curl, array(CURLOPT_RETURNTRANSFER => true, CURLOPT_URL => $url));
 			curl_exec($curl);
 			$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 			curl_close($curl);

@@ -164,7 +164,7 @@ class Defensio_REST_Client {
 		$result = explode("\r\n\r\n", $result, 2);
 		$header = isset($result[0]) ? explode("\r\n", $result[0]) : '';
 		$content = isset($result[1]) ? $result[1] : '';
-		$status = isset($header[0]) ? explode(' ', $header[0] ) : NULL;
+		$status = isset($header[0]) ? explode(' ', $header[0]) : NULL;
 		$status = $status[1];
 
 		return Array($status, $content, $header);

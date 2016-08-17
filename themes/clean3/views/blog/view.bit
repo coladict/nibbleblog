@@ -1,30 +1,23 @@
 <?php
 
 // Disqus and Facebook comments
-if( $Comment->disqus_enabled() )
-{
+if ($Comment->disqus_enabled()) {
 	include('disqus_comments.bit');
 }
-elseif( $Comment->facebook_enabled() )
-{
+else if ($Comment->facebook_enabled()) {
 	include('facebook_comments.bit');
 }
 
 // There are no posts
-if(empty($posts))
-{
-	echo '<p>'.$Language->get('there are no posts').'</p>';
+if (empty($posts)) {
+	echo '<p>' . $Language->get('there are no posts') . '</p>';
 }
-else
-{
+else {
 	// Print each post
-	foreach($posts as $post)
-	{
+	foreach ($posts as $post) {
 		include('post.bit');
 	}
 }
 
 // Pager
 include('pager.bit');
-
-?>

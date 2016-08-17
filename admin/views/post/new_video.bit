@@ -64,7 +64,7 @@ $(document).ready(function() {
 			return(false);
 		}
 
-		button.attr("disabled","disabled").attr("value","<?php echo $_LANG['LOADING'] ?>");
+		button.attr("disabled", "disabled").attr("value", "<?php echo $_LANG['LOADING']; ?>");
 		hidden_box.slideUp();
 
 		$.ajax({
@@ -80,7 +80,7 @@ $(document).ready(function() {
 					hidden_box.slideDown();
 				}
 
-				button.removeAttr("disabled").attr("value","<?php echo $_LANG['GET_VIDEO_INFORMATION'] ?>");
+				button.removeAttr("disabled").attr("value", "<?php echo $_LANG['GET_VIDEO_INFORMATION']; ?>");
 
 			}
 		});

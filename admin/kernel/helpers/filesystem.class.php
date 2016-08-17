@@ -29,7 +29,7 @@ class Filesystem {
 			$files = array();
 		}
 
-		foreach ($files as $key=>$file) {
+		foreach ($files as $key => $file) {
 			$files[$key] = basename($file);
 		}
 

@@ -12,22 +12,22 @@
 class Date {
 
 	public static function set_locale($string) {
-		if (setlocale(LC_ALL,$string.'.UTF-8') !== false) {
+		if (setlocale(LC_ALL, $string.'.UTF-8') !== false) {
 			return true;
 		}
 
-		if (setlocale(LC_ALL,$string.'.UTF8') !== false) {
+		if (setlocale(LC_ALL, $string.'.UTF8') !== false) {
 			return true;
 		}
 
-		return setlocale(LC_ALL,$string);
+		return setlocale(LC_ALL, $string);
 	}
 
 	public static function set_timezone($string) {
 		return(date_default_timezone_set($string));
 	}
 
-	// Return array('Africa/Abidjan'=>'Africa/Abidjan (GMT+0)', ..., 'Pacific/Wallis'=>'Pacific/Wallis (GMT+12)');
+	// Return array('Africa/Abidjan' => 'Africa/Abidjan (GMT+0)', ..., 'Pacific/Wallis' => 'Pacific/Wallis (GMT+12)');
 	// PHP supported list. http://php.net/manual/en/timezones.php
 	public static function get_timezones() {
 		$tmp = array();

@@ -78,10 +78,10 @@ if (isset($_GET['post'])) {
 	$url['post'] = Validation::sanitize_html($_GET['post']);
 }
 
-if ( isset($_GET['sync']) ) {
+if (isset($_GET['sync'])) {
 	$url['sync'] = Validation::sanitize_html($_GET['sync']);
 }
 
-if ( isset($_GET['page']) ) {
+if (isset($_GET['page'])) {
 	$url['page'] = Validation::sanitize_html($_GET['page']);
 }

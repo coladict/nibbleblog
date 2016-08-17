@@ -14,7 +14,7 @@ $internal_is_utf = ($enc == 'utf-8' || $enc == 'utf8');
 unset($enc);
 class NBXML extends SimpleXMLElement {
 
-	// Private keys = array('username'=>'diego');
+	// Private keys = array('username' => 'diego');
 	public function addGodChild($name, $private_key) {
 		global $internal_is_utf;
 		if (!$internal_is_utf) {
@@ -25,7 +25,7 @@ class NBXML extends SimpleXMLElement {
 		$node = parent::addChild($name);
 		$node[0] = ''; // (BUG) Con esta forma escapamos el & que no escapa el addChild
 
-		foreach ($private_key as $name=>$value) {
+		foreach ($private_key as $name => $value) {
 			$node->addAttribute($name, $value);
 		}
 

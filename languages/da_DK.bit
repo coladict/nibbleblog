@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Dansk - Danmark',
-	'english'=>'Danish',
-	'last_update'=>'21/08/2014',
-	'author'=>'Bo Tranberg',
-	'email'=>'bo@tberg.dk',
-	'url'=>'http://botranberg.dk'
+	'native' => 'Dansk - Danmark',
+	'english' => 'Danish',
+	'last_update' => '21/08/2014',
+	'author' => 'Bo Tranberg',
+	'email' => 'bo@tberg.dk',
+	'url' => 'http://botranberg.dk'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Seneste kommentar';

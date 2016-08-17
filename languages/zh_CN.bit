@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'简体中文',
-	'english'=>'Chinese Simplified',
-	'last_update'=>'2014-03-28',
-	'author'=>'Neil Li',
-	'email'=>'yong.li1992@foxmail.com',
-	'url'=>'http://www.liyongneil.com'
+	'native' => '简体中文',
+	'english' => 'Chinese Simplified',
+	'last_update' => '2014-03-28',
+	'author' => 'Neil Li',
+	'email' => 'yong.li1992@foxmail.com',
+	'url' => 'http://www.liyongneil.com'
 );
 
 $_LANG['LAST_COMMENTS'] = '最新评论';

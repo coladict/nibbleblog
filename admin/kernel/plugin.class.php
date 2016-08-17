@@ -60,7 +60,7 @@ class Plugin {
 		$new_obj->addChild('title',				$this->name);
 
 		foreach ($this->fields as $field => $value) {
-			$new_obj->addChild($field,$value);
+			$new_obj->addChild($field, $value);
 		}
 
 		if (!$new_obj->asXml(PATH_PLUGINS_DB . $this->dir_name . '/db.xml')) {

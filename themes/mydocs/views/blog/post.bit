@@ -2,10 +2,10 @@
 
 	<header>
 		<h1 class="post-title">
-			<a href="<?php echo Post::permalink() ?>"><?php echo Post::title() ?></a>
+			<a href="<?php echo Post::permalink(); ?>"><?php echo Post::title(); ?></a>
 		</h1>
 		<h2 class="post-description">
-			<?php echo Post::description() ?>
+			<?php echo Post::description(); ?>
 		</h2>
 	</header>
 

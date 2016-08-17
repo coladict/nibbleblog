@@ -3,7 +3,7 @@
 <html lang="<?php echo Blog::language(); ?>">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">	
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
 <?php
 	// Charset, title, description, keywords, robots, etc
 	echo Blog::meta_tags();
@@ -21,7 +21,7 @@
 <!-- HEADER -->
 <header>
 	<h1><a href="<?php echo Blog::url(); ?>"><?php echo Blog::name(); ?></a></h1>
-	<p><?php echo Blog::slogan() ?></p>
+	<p><?php echo Blog::slogan(); ?></p>
 	<?php if (!empty($plugins)) {
 		echo '<button id="menu"></button>';
 	} ?>

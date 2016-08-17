@@ -82,10 +82,10 @@ class Comment {
 				$this->db_notification->add('comment',
 					$this->settings['notification_comments'],
 					array(
-						'ip'=>$data['author_ip'],
-						'author_name'=>$data['author_name'],
-						'author_email'=>$data['author_email'],
-						'comment'=>$data['content']
+						'ip' => $data['author_ip'],
+						'author_name' => $data['author_name'],
+						'author_email' => $data['author_email'],
+						'comment' => $data['content']
 					)
 				);
 			}
@@ -115,7 +115,7 @@ class Comment {
 	// Returns an array if there are comments in the post
 	// Returns an empty array if there are not comment on the post
 	public function get_by_post($id_post) {
-		$comments = $this->db->get_list_by_post(array('id_post'=>$id_post));
+		$comments = $this->db->get_list_by_post(array('id_post' => $id_post));
 
 		return($comments);
 	}
@@ -156,7 +156,7 @@ class Comment {
 
 	// DEPRACTED
 	public function set_hash() {
-		$hash = Crypt::get_hash(time(),time());
+		$hash = Crypt::get_hash(time(), time());
 		Session::set('hash', $hash);
 	}
 
@@ -192,7 +192,7 @@ class Comment {
 */
 	private function sanitize($args) {
 		$safe = array();
-		foreach ($args as $key=>$value) {
+		foreach ($args as $key => $value) {
 			$safe[$key] = Validation::sanitize_html($value);
 		}
 
@@ -210,9 +210,9 @@ class Comment {
 				}
 
 				$document = array(
-					'type'=>'comment',
-					'content'=>$content,
-					'platform'=>'Nibbleblog',
+					'type' => 'comment',
+					'content' => $content,
+					'platform' => 'Nibbleblog',
 					'client' => 'Nibbleblog',
 					'async' => 'false'
 				);

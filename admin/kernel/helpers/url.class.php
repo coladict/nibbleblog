@@ -84,5 +84,5 @@ class Url {
 			return BLOG_URL . 'sitemap.php';
 		}
 	}
-	
+
 }

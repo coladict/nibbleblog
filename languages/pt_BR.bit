@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Português do Brasil',
-	'english'=>'Brazilian Portuguese',
-	'last_update'=>'06/04/2015',
-	'author'=>'Rafael Neri',
-	'email'=>'rafepel@gmail.com',
-	'url'=>'http://rafaelneri.com.br/'
+	'native' => 'Português do Brasil',
+	'english' => 'Brazilian Portuguese',
+	'last_update' => '06/04/2015',
+	'author' => 'Rafael Neri',
+	'email' => 'rafepel@gmail.com',
+	'url' => 'http://rafaelneri.com.br/'
 );
 
 $_LANG['LAST_COMMENTS'] = 'Últimos comentários';

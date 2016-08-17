@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 <?php
 	// Charset, title, description, keywords, robots, etc
@@ -9,8 +9,7 @@
 	echo Blog::favicon();
 
 	// Plugins for <head></head>
-	foreach($plugins as $plugin)
-	{
+	foreach ($plugins as $plugin) {
 		echo $plugin->blog_head();
 	}
 ?>
@@ -18,11 +17,11 @@
 <body>
 
 	<header>
-		<h1><?php echo Blog::name() ?></h1>
-		<h2><?php echo Blog::slogan() ?></h2>
+		<h1><?php echo Blog::name(); ?></h1>
+		<h2><?php echo Blog::slogan(); ?></h2>
 	</header>
 
-	<?php include(THEME_VIEWS.$layout['view']); ?>
+	<?php include(THEME_VIEWS . $layout['view']); ?>
 
 </body>
 </html>

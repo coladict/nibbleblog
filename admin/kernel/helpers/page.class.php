@@ -20,7 +20,7 @@ class Page {
 	public static function permalink($absolute = false) {
 		global $page;
 
-		return Url::page($page,$absolute);
+		return Url::page($page, $absolute);
 	}
 
 	public static function published($format = false) {

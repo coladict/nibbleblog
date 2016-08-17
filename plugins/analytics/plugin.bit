@@ -22,7 +22,7 @@ class PLUGIN_ANALYTICS extends Plugin {
 	public function dashboard_config() {
 		global $Language;
 
-		$html = Html::label(array('content' => $Language->get('GOOGLE_ANALYTICS_ID') ));
+		$html = Html::label(array('content' => $Language->get('GOOGLE_ANALYTICS_ID')));
 		$html .= Html::input(array('name' => 'id', 'type' => 'text', 'value' => $this->database('id')));
 
 		return $html;

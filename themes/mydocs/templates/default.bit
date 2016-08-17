@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 <?php
 	// Charset, title, description, keywords, robots, etc
@@ -18,8 +18,7 @@
 	echo Blog::favicon();
 
 	// Plugins for <head></head>
-	foreach($plugins as $plugin)
-	{
+	foreach ($plugins as $plugin) {
 		echo $plugin->blog_head();
 	}
 ?>
@@ -30,12 +29,12 @@
 
 	<!-- HEADER -->
 	<header id="blog-head">
-		<a href="<?php echo Blog::url() ?>">
-			<span class="blog-name"><?php echo Blog::name() ?></span>
-			<span class="blog-slogan"><?php echo Blog::slogan() ?></span>
+		<a href="<?php echo Blog::url(); ?>">
+			<span class="blog-name"><?php echo Blog::name(); ?></span>
+			<span class="blog-slogan"><?php echo Blog::slogan(); ?></span>
 		</a>
 		<div class="links">
-			<a href="<?php echo HTML_PATH_ROOT ?>">Home</a>
+			<a href="<?php echo HTML_PATH_ROOT; ?>">Home</a>
 			<a href="http://demo.nibbleblog.com">Demo</a>
 			<a href="http://forum.nibbleblog.com">Forum</a>
 		</div>
@@ -47,16 +46,14 @@
 		<section id="sidebar">
 			<?php
 				$post_tmp = $post;
-				foreach($categories as $category)
-				{
+				foreach ($categories as $category) {
 					echo '<h2 class="category-name">'.Category::name().'</h2>';
 
-					$posts_by_category = $_DB_POST->get_list_by_category(array('id_cat'=>Category::id(), 'page'=>0, 'amount'=>20));
+					$posts_by_category = $_DB_POST->get_list_by_category(array('id_cat' => Category::id(), 'page' => 0, 'amount' => 20));
 
 					echo '<ul>';
 
-					foreach($posts_by_category as $post)
-					{
+					foreach ($posts_by_category as $post) {
 						echo '<li><a class="post-title" href="'.Post::permalink().'">'.Post::title().'</a></li>';
 					}
 
@@ -75,8 +72,8 @@
 
 	<!-- FOOTER -->
 	<footer id="blog-foot">
-		<span class="blog-atom"><a href="<?php echo $layout['feed'] ?>">Atom</a></span>
-		<span class="blog-footer"> · <?php echo Blog::footer() ?></span>
+		<span class="blog-atom"><a href="<?php echo $layout['feed']; ?>">Atom</a></span>
+		<span class="blog-footer"> · <?php echo Blog::footer(); ?></span>
 	</footer>
 
 </div>

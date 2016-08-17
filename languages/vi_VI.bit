@@ -1,12 +1,12 @@
 <?php
 
 $_LANG_CONFIG['DATA'] = array(
-	'native'=>'Tiếng Việt - Tiếng Việt',
-	'english'=>'Vietnamese',
-	'last_update'=>'02/02/2014',
-	'author'=>'babycntt',
-	'email'=>'quan0909@gmail.com',
-	'url'=>''
+	'native' => 'Tiếng Việt - Tiếng Việt',
+	'english' => 'Vietnamese',
+	'last_update' => '02/02/2014',
+	'author' => 'babycntt',
+	'email' => 'quan0909@gmail.com',
+	'url' => ''
 );
 
 $_LANG['LAST_COMMENTS'] = 'Bình luận mới nhất';

@@ -82,8 +82,8 @@ $(document).ready(function() {
 		}
 		else {
 			self.attr("data-flag", "1");
-			self.html("<?php echo $_LANG['ARE_YOU_SURE'] ?>");
-			self.css("color","red");
+			self.html("<?php echo $_LANG['ARE_YOU_SURE']; ?>");
+			self.css("color", "red");
 		}
 	});
 

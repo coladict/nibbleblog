@@ -45,7 +45,7 @@ $(document).ready(function() {
 		type: "GET",
 		dataType: "jsonp",
 		success: function(json) {
-			if (json.build > <?php echo NIBBLEBLOG_BUILD ?>) {
+			if (json.build > <?php echo NIBBLEBLOG_BUILD; ?>) {
 				$("#js_version").html(json.version);
 				$("#js_release").html(json.release);
 				$("#js_notification_version").show();
