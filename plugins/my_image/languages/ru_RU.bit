@@ -1,9 +1,7 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-'NAME'=>'Мое изображение',
-'DESCRIPTION'=>'Показывает картинку',
-'CAPTION'=>'Подпись'
+	'NAME' => 'Мое изображение',
+	'DESCRIPTION' => 'Показывает картинку',
+	'CAPTION' => 'Подпись'
 );
-
-?>

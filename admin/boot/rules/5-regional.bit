@@ -11,8 +11,8 @@
 */
 
 // Include the language
-include(PATH_LANGUAGES.'en_US.bit');
-include(PATH_LANGUAGES.$settings['language'].'.bit');
+include(PATH_LANGUAGES . 'en_US.bit');
+include(PATH_LANGUAGES . $settings['language'] . '.bit');
 $Language->set($_LANG);
 
 // Set the timezone
@@ -22,6 +22,4 @@ Date::set_timezone($settings['timezone']);
 Date::set_locale($settings['locale']);
 
 // Translit
-$translit_enable = isset($_LANG['TRANSLIT'])?$_LANG['TRANSLIT']:false;
-
-?>
+$translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;

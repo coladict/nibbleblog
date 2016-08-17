@@ -1,8 +1,6 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-	'NAME'=>'Kategorier',
-	'DESCRIPTION'=>'Viser alle kategorier på din blog og gør det muligt at filtrere indlæg efter kategori.'
+	'NAME' => 'Kategorier',
+	'DESCRIPTION' => 'Viser alle kategorier på din blog og gør det muligt at filtrere indlæg efter kategori.'
 );
-
-?>

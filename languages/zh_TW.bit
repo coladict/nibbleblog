@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = '分類別名';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = '當發表時顯示進階選項';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = '您部落格的絕對網址, 例如:http://www.domain.com/directory/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = '有新延伸模組可以安裝';
-
-?>

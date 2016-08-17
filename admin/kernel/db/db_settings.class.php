@@ -24,10 +24,8 @@ class DB_SETTINGS {
 CONSTRUCTORS
 ======================================================================================
 */
-	function DB_SETTINGS($file)
-	{
-		if(file_exists($file))
-		{
+	function __construct($file) {
+		if (file_exists($file)) {
 			$this->file = $file;
 
 			$this->xml = new NBXML($this->file, 0, TRUE, '', FALSE);
@@ -40,13 +38,11 @@ PUBLIC METHODS
 ======================================================================================
 */
 	// Returns TRUE if the file was written successfully and FALSE otherwise.
-	public function savetofile()
-	{
-		return( $this->xml->asXML($this->file) );
+	public function savetofile() {
+		return($this->xml->asXML($this->file));
 	}
 
-	public function get()
-	{
+	public function get() {
 		$tmp_array = array();
 
 		// General
@@ -106,35 +102,29 @@ PUBLIC METHODS
 		return($tmp_array);
 	}
 
-	public function set($args)
-	{
-		foreach($args as $name=>$value)
-		{
+	public function set($args) {
+		foreach ($args as $name => $value) {
 			$this->xml->setChild($name, $value);
 		}
 
 		return(true);
 	}
 
-	public function get_language()
-	{
+	public function get_language() {
 		return((string) $this->xml->getChild('language'));
 	}
 
-	public function get_base_path()
-	{
+	public function get_base_path() {
 		return((string) $this->xml->getChild('path'));
 	}
 
-	public function get_languages()
-	{
+	public function get_languages() {
 		$tmp_array = array();
 
 		$files = Filesystem::ls(PATH_LANGUAGES, '*', 'bit', false, false, false);
 
-		foreach($files as $file)
-		{
-			include(PATH_LANGUAGES.$file);
+		foreach ($files as $file) {
+			include(PATH_LANGUAGES . $file);
 			$iso = basename($file, '.bit');
 			$native = $_LANG_CONFIG['DATA']['native'];
 			$tmp_array[$iso] = ucwords($native);
@@ -143,10 +133,7 @@ PUBLIC METHODS
 		return($tmp_array);
 	}
 
-	public function get_themes()
-	{
-		$tmp_array = array();
-
+	public function get_themes() {
 		$files = Filesystem::ls(PATH_THEMES, '*', 'bit', true, false, false);
 
 		return $files;
@@ -160,5 +147,3 @@ PUBLIC METHODS
 
 
 } // END Class
-
-?>

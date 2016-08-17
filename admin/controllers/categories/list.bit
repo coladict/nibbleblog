@@ -3,16 +3,14 @@
 // ============================================================================
 //	POST
 // ============================================================================
-if( $_SERVER['REQUEST_METHOD'] == 'POST' )
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// New category
 	$safe = array();
-	$safe['name'] = Validation::sanitize_html( $_POST['name'] );
+	$safe['name'] = Validation::sanitize_html($_POST['name']);
 	$safe['slug'] = Text::clean_url($safe['name'], '-', $translit_enable);
-	$safe['position'] = count($categories)+1;
+	$safe['position'] = count($categories) + 1;
 
-	if(Text::not_empty($safe['name']))
-	{
+	if (Text::not_empty($safe['name'])) {
 		$_DB_CATEGORIES->add($safe);
 	}
 }
@@ -23,5 +21,3 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
 // Update categories list
 $categories = $_DB_CATEGORIES->get_all();
-
-?>

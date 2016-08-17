@@ -29,10 +29,8 @@ class DB_PAGES {
 	CONSTRUCTORS
 ========================================================================
 */
-	function DB_PAGES($file)
-	{
-		if(file_exists($file))
-		{
+	function __construct($file) {
+		if (file_exists($file)) {
 			$this->file = $file;
 
 			$this->last_insert_id = max($this->get_autoinc() - 1, 0);
@@ -54,13 +52,12 @@ class DB_PAGES {
 	 * Add a new page
 	 *
 	 * parameters:
-	 *  $args = array()
+	 *	$args = array()
 	 *
 	 */
-	public function add($args)
-	{
+	public function add($args) {
 		// Template
-		$template  = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+		$template = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 		$template .= '<page>';
 		$template .= '</page>';
 
@@ -90,21 +87,20 @@ class DB_PAGES {
 		// Draft, publish
 		$mode = 'NULL';
 
-		if(isset($args['mode']))
-		{
-			if($args['mode']=='draft')
+		if (isset($args['mode'])) {
+			if ($args['mode']=='draft') {
 				$mode = 'draft';
+			}
 		}
 
 		// Time for filename
 		$time_filename = Date::format_gmt($time_unix, 'Y.m.d.H.i.s');
 
 		// Filename for the new page
-		$filename = $new_id.'.NULL.NULL.'.$mode.'.'.$time_filename.'.xml';
+		$filename = $new_id . '.NULL.NULL.' . $mode . '.' . $time_filename . '.xml';
 
 		// Save to file
-		if($new_obj->asXml(PATH_PAGES.$filename))
-		{
+		if ($new_obj->asXml(PATH_PAGES . $filename)) {
 			// Set the next page id
 			$this->set_autoinc(1);
 
@@ -121,22 +117,22 @@ class DB_PAGES {
 	 * Modify a page
 	 *
 	 * parameters:
-	 *  $args = array()
+	 *	$args = array()
 	 *
 	 */
-	public function set($args)
-	{
-		if(!$this->set_file($args['id']))
+	public function set($args) {
+		if (!$this->set_file($args['id'])) {
 			return false;
+		}
 
 		$new_obj = new NBXML(PATH_PAGES.$this->files[0], 0, TRUE, '', FALSE);
 
-		$new_obj->setChild('title', 			$args['title']);
-		$new_obj->setChild('content', 			$args['content']);
-		$new_obj->setChild('description', 		$args['description']);
-		$new_obj->setChild('keywords', 			$args['keywords']);
-		$new_obj->setChild('position', 			(int)$args['position']);
-		$new_obj->setChild('mod_date', 			Date::unixstamp());
+		$new_obj->setChild('title',				$args['title']);
+		$new_obj->setChild('content',			$args['content']);
+		$new_obj->setChild('description',		$args['description']);
+		$new_obj->setChild('keywords',			$args['keywords']);
+		$new_obj->setChild('position',			(int)$args['position']);
+		$new_obj->setChild('mod_date',			Date::unixstamp());
 
 		// ---------------------------------------------------------
 		// Filename
@@ -146,15 +142,14 @@ class DB_PAGES {
 		// Draft, publish
 		$file[3] = 'NULL';
 
-		if(isset($args['mode']))
-		{
-			if($args['mode']=='draft')
+		if (isset($args['mode'])) {
+			if ($args['mode'] == 'draft') {
 				$file[3] = 'draft';
+			}
 		}
 
 		// Publish date
-		if(isset($args['unixstamp']))
-		{
+		if (isset($args['unixstamp'])) {
 			$new_obj->setChild('pub_date', $args['unixstamp']);
 
 			$file[4] = Date::format_gmt($args['unixstamp'], 'Y');
@@ -169,8 +164,7 @@ class DB_PAGES {
 		$filename = implode('.', $file);
 
 		// Delete the old page
-		if($this->delete( array('id'=>$args['id']) ))
-		{
+		if ($this->delete(array('id'=>$args['id']))) {
 			// Slug
 			$slug = $this->slug_generator($args['slug']);
 			$this->slug_add($args['id'], $slug);
@@ -189,34 +183,32 @@ class DB_PAGES {
 	 * Get a page by id or slug
 	 *
 	 * parameters:
-	 *  $args = array(id, slug)
+	 *	$args = array(id, slug)
 	 *
 	 */
-	public function get($args)
-	{
-		if(isset($args['slug']))
-		{
-			$where = '@slug="'.utf8_encode($args['slug']).'"';
-			$node = $this->xml->xpath('/pages/friendly/url['.$where.']');
+	public function get($args) {
+		if (isset($args['slug'])) {
+			$where = '@slug="' . utf8_encode($args['slug']) . '"';
+			$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
-			if($node==array())
+			if ($node == array()) {
 				return false;
+			}
 
 			$id = $node[0]->getAttribute('id');
 		}
-		elseif(isset($args['id']))
-		{
+		else if (isset($args['id'])) {
 			$id = $args['id'];
 		}
-		else
-		{
+		else {
 			return false;
 		}
 
 		$this->set_file($id);
 
-		if($this->files_count > 0)
+		if ($this->files_count > 0) {
 			return $this->get_items($this->files[0]);
+		}
 
 		return false;
 	}
@@ -225,15 +217,13 @@ class DB_PAGES {
 	 * Delete a page and the slug link
 	 *
 	 * parameters:
-	 *  $args = array(id)
+	 *	$args = array(id)
 	 *
 	 */
-	public function delete($args)
-	{
+	public function delete($args) {
 		$this->set_file($args['id']);
 
-		if($this->files_count > 0)
-		{
+		if ($this->files_count > 0) {
 			// Delete the slug
 			$this->slug_delete($args['id']);
 
@@ -241,7 +231,7 @@ class DB_PAGES {
 			$this->savetofile();
 
 			// Delete the page
-			return unlink(PATH_PAGES.$this->files[0]);
+			return unlink(PATH_PAGES . $this->files[0]);
 		}
 
 		return false;
@@ -251,8 +241,7 @@ class DB_PAGES {
 	 * Save the config file
 	 *
 	 */
-	public function savetofile()
-	{
+	public function savetofile() {
 		return $this->xml->asXML($this->file);
 	}
 
@@ -260,25 +249,24 @@ class DB_PAGES {
 	 * Return the last page id
 	 *
 	 */
-	public function get_last_insert_id()
-	{
-		return( $this->last_insert_id );
+	public function get_last_insert_id() {
+		return($this->last_insert_id);
 	}
 
 	/*
 	 * Return an array with published pages
 	 *
 	 * parameters:
-	 *  $args = array(page, amount)
+	 *	$args = array(page, amount)
 	 *
 	 */
-	public function get_all()
-	{
+	public function get_all() {
 		// Set only published pages
 		$this->set_files_by_published();
 
-		if($this->files_count > 0)
+		if ($this->files_count > 0) {
 			return $this->get_list_by();
+		}
 
 		return array();
 	}
@@ -287,16 +275,16 @@ class DB_PAGES {
 	 * Return an array with published and drafts posts filter by page and amount
 	 *
 	 * parameters:
-	 *  $args = array(page, amount)
+	 *	$args = array(page, amount)
 	 *
 	 */
-	public function get_list_by_page_more_drafts($args)
-	{
+	public function get_list_by_page_more_drafts($args) {
 		// Set list of posts drafts and published
 		$this->set_files();
 
-		if($this->files_count > 0)
+		if ($this->files_count > 0) {
 			return $this->get_list_by($args['page'], $args['amount']);
+		}
 
 		return array();
 	}
@@ -305,16 +293,16 @@ class DB_PAGES {
 	 * Return an array with drafts posts filter by page and amount
 	 *
 	 * parameters:
-	 *  $args = array(page, amount)
+	 *	$args = array(page, amount)
 	 *
 	 */
-	public function get_drafts($args)
-	{
+	public function get_drafts($args) {
 		// Set only drafts posts
 		$this->set_files_by_draft();
 
-		if($this->files_count > 0)
+		if ($this->files_count > 0) {
 			return $this->get_list_by($args['page'], $args['amount']);
+		}
 
 		return array();
 	}
@@ -323,8 +311,7 @@ class DB_PAGES {
 	 * Return the amount of posts
 	 *
 	 */
-	public function get_count()
-	{
+	public function get_count() {
 		return $this->files_count;
 	}
 
@@ -332,8 +319,7 @@ class DB_PAGES {
 	 * Return the next post id
 	 *
 	 */
-	public function get_autoinc()
-	{
+	public function get_autoinc() {
 		return (int) $this->xml['autoinc'];
 	}
 
@@ -346,16 +332,16 @@ PRIVATE METHODS
 	 * Get slug by post id
 	 *
 	 * parameters:
-	 *  (int) $id = Post id
+	 *	(int) $id = Post id
 	 *
 	 */
-	private function slug_get($id)
-	{
-		$where = '@id="'.utf8_encode($id).'"';
-		$node = $this->xml->xpath('/pages/friendly/url['.$where.']');
+	private function slug_get($id) {
+		$where = '@id="' . utf8_encode($id) . '"';
+		$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
-		if($node==array())
+		if ($node == array()) {
 			return false;
+		}
 
 		return $node[0]->getAttribute('slug');
 	}
@@ -364,18 +350,19 @@ PRIVATE METHODS
 	 * Generate a new slug, unique
 	 *
 	 * parameters:
-	 *  (string) $slug
+	 *	(string) $slug
 	 *
 	 */
-	private function slug_generator($slug)
-	{
-		if(!$this->slug_exists($slug))
+	private function slug_generator($slug) {
+		if (!$this->slug_exists($slug)) {
 			return $slug;
+		}
 
-		$slug = $slug.'-0';
+		$slug = $slug . '-0';
 
-		while($this->slug_exists($slug))
+		while ($this->slug_exists($slug)) {
 			$slug++;
+		}
 
 		return $slug;
 	}
@@ -384,16 +371,16 @@ PRIVATE METHODS
 	 * Check if exists an slug
 	 *
 	 * parameters:
-	 *  (string) $slug
+	 *	(string) $slug
 	 *
 	 */
-	private function slug_exists($slug)
-	{
-		$where = '@slug="'.utf8_encode($slug).'"';
-		$node = $this->xml->xpath('/pages/friendly/url['.$where.']');
+	private function slug_exists($slug) {
+		$where = '@slug="' . utf8_encode($slug) . '"';
+		$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
-		if($node==array())
+		if ($node == array()) {
 			return false;
+		}
 
 		return true;
 	}
@@ -402,29 +389,26 @@ PRIVATE METHODS
 	 * Add slug of a post
 	 *
 	 * parameters:
-	 *  (int) $id = Post id
-	 *  (string) $slug
+	 *	(int) $id = Post id
+	 *	(string) $slug
 	 *
 	 */
-	private function slug_add($id, $slug)
-	{
-		return $this->xml->friendly->addGodChild('url', array('id'=>$id, 'slug'=>$slug));
+	private function slug_add($id, $slug) {
+		return $this->xml->friendly->addGodChild('url', array('id' => $id, 'slug' => $slug));
 	}
 
 	/*
 	 * Delete slug of a post
 	 *
 	 * parameters:
-	 *  (int) $id = Post id
+	 *	(int) $id = Post id
 	 *
 	 */
-	private function slug_delete($id)
-	{
-		$where = '@id="'.utf8_encode($id).'"';
-		$nodes = $this->xml->xpath('/pages/friendly/url['.$where.']');
+	private function slug_delete($id) {
+		$where = '@id="' . utf8_encode($id) . '"';
+		$nodes = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
-		foreach($nodes as $node)
-		{
+		foreach ($nodes as $node) {
 			$dom = dom_import_simplexml($node);
 			$dom->parentNode->removeChild($dom);
 		}
@@ -432,8 +416,7 @@ PRIVATE METHODS
 		return true;
 	}
 
-	private function set_autoinc($value = 0)
-	{
+	private function set_autoinc($value = 0) {
 		$this->xml['autoinc'] = $value + $this->get_autoinc();
 	}
 
@@ -441,17 +424,17 @@ PRIVATE METHODS
 	 * Set one page by page id
 	 *
 	 * parameters:
-	 *  (int) $id = Page id
+	 *	(int) $id = Page id
 	 *
 	 */
-	private function set_file($id)
-	{
-		$this->files = Filesystem::ls(PATH_PAGES, $id.'.*.*.*.*.*.*.*.*.*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+	private function set_file($id) {
+		$this->files = Filesystem::ls(PATH_PAGES, $id . '.*.*.*.*.*.*.*.*.*', 'xml', false, false, true);
+		$this->files_count = count($this->files);
 
 		// Page not found
-		if($this->files_count == 0)
+		if ($this->files_count == 0) {
 			return false;
+		}
 
 		return true;
 	}
@@ -460,46 +443,42 @@ PRIVATE METHODS
 	 * Set all pages
 	 *
 	 */
-	private function set_files()
-	{
+	private function set_files() {
 		$this->files = Filesystem::ls(PATH_PAGES, '*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+		$this->files_count = count($this->files);
 	}
 
 	/*
 	 * Set only published pages
 	 *
 	 */
-	private function set_files_by_published()
-	{
+	private function set_files_by_published() {
 		$this->files = Filesystem::ls(PATH_PAGES, '*.*.*.NULL.*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+		$this->files_count = count($this->files);
 	}
 
 	/*
 	 * Set only drafts pages
 	 *
 	 */
-	private function set_files_by_draft()
-	{
+	private function set_files_by_draft() {
 		$this->files = Filesystem::ls(PATH_PAGES, '*.*.*.draft.*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+		$this->files_count = count($this->files);
 	}
 
 	/*
 	 * Return all items from a file
 	 *
 	 * parameters:
-	 *  (string) $file = Filename (ID_PAGE.NULL.NULL.NULL.YYYY.MM.DD.HH.mm.ss.xml)
+	 *	(string) $file = Filename (ID_PAGE.NULL.NULL.NULL.YYYY.MM.DD.HH.mm.ss.xml)
 	 *
 	 */
-	private function get_items($file)
-	{
+	private function get_items($file) {
 		$xml = new NBXML(PATH_PAGES.$file, 0, TRUE, '', FALSE);
 
 		$file_info = explode('.', $file);
 
-		$tmp_array['content'] = $xml->getChild('content');
+		$tmp_array['content']			= $xml->getChild('content');
 
 		$tmp_array['filename']			= $file;
 
@@ -520,18 +499,17 @@ PRIVATE METHODS
 		return $tmp_array;
 	}
 
-	private function get_list_by()
-	{
+	private function get_list_by() {
 		$tmp_array = array();
 
-		foreach($this->files as $file)
-		{
+		foreach ($this->files as $file) {
 			$page = $this->get_items($file);
 
 			$position = $page['position'];
 
-			while(isset($tmp_array[$position]))
+			while (isset($tmp_array[$position])) {
 				$position++;
+			}
 
 			$tmp_array[$position] = $page;
 		}
@@ -543,5 +521,3 @@ PRIVATE METHODS
 	}
 
 } // END Class
-
-?>

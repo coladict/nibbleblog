@@ -21,5 +21,3 @@ echo 'var HTML_PATH_ADMIN_TEMPLATES = "'.HTML_PATH_ADMIN_TEMPLATES.'";';
 // =====================================================================
 
 echo 'var _MAX_FILE_SIZE = 1024 * 3000;';
-
-?>

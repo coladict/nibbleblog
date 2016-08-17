@@ -238,7 +238,7 @@ $_LANG['SITE_DESCRIPTION'] = 'Mô tả trang';
 $_LANG['ROBOTS'] = 'Robots';
 $_LANG['WEBMASTER_TOOLS'] = 'Công cụ quản trị web';
 $_LANG['GOOGLE_WEBMASTER_TOOLS'] = 'Công cụ quản trị web của Google - Mã xác thực';
-$_LANG['BING_WEBMASTER_TOOLS'] = 'Công cụ quản trị web của  Bing - Mã xác thực';
+$_LANG['BING_WEBMASTER_TOOLS'] = 'Công cụ quản trị web của Bing - Mã xác thực';
 $_LANG['SEO_OPTIONS'] = 'Tùy chọn tối ưu hóa công cụ tìm kiếm (SEO)';
 $_LANG['POSITION'] = 'Vị trí';
 $_LANG['TAGS_SEPARATED_BY_COMMA'] = 'Các tag cách nhau bằng dấu phẩy.';
@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = 'Đường dẫn của chuyên mục';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = 'Tùy chọn nâng cao khi đăng nội dung.';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Đường dẫn tĩnh blog của bạn. Ví dụ: http://www.tenmien.com/thumuc/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugin hiện có sẵn để cài đặt';
-
-?>

@@ -3,11 +3,9 @@
 // ============================================================================
 //	GET
 // ============================================================================
-if( $_SERVER['REQUEST_METHOD'] == 'GET' )
-{
-	if(!empty($_GET['other']))
-	{
-		$_DB_SETTINGS->set(array('theme'=>$_GET['other']));
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	if (!empty($_GET['other'])) {
+		$_DB_SETTINGS->set(array('theme' => $_GET['other']));
 
 		$_DB_SETTINGS->savetofile();
 
@@ -25,14 +23,11 @@ $themes_dirs = $_DB_SETTINGS->get_themes();
 
 $themes_list = array();
 
-foreach($themes_dirs as $dir)
-{
-	include(PATH_THEMES.$dir.'/config.bit');
+foreach ($themes_dirs as $dir) {
+	include(PATH_THEMES . $dir . '/config.bit');
 
 	$theme['dir'] = $dir;
 	array_push($themes_list, $theme);
 
-	$themes_html[$dir]=$theme['name'];
+	$themes_html[$dir] = $theme['name'];
 }
-
-?>

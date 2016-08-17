@@ -25,8 +25,9 @@
 			echo '<div class="title">'.$layout['title'].'</div>';
 
 			// ALERT
-			if(Session::get_error())
+			if (Session::get_error()) {
 				echo '<div id="alert">'.Session::get_alert().'</div>';
+			}
 
 			// LAYOUT_VIEW defined on controller
 			include(PATH_ADMIN_VIEW.$layout['view']);

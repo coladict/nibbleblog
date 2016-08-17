@@ -11,20 +11,16 @@
 
 class Category {
 
-	public static function id()
-	{
+	public static function id() {
 		global $category;
 
 		return $category['id'];
 	}
 
-	public static function name()
-	{
+	public static function name() {
 		global $category;
 
 		return $category['name'];
 	}
 
 }
-
-?>

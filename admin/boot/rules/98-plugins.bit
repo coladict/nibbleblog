@@ -33,23 +33,22 @@ $plugins_not_installed = array();
 // Plugins installed the keys of the array are the names
 $plugins_by_name = array();
 
-foreach($plugins_on_system as $dir_name)
-{
-	include_once(PATH_PLUGINS.$dir_name.'/plugin.bit');
+foreach ($plugins_on_system as $dir_name) {
+	include_once(PATH_PLUGINS . $dir_name . '/plugin.bit');
 	$class = 'PLUGIN_'.strtoupper($dir_name);
 	$plugins_all[$class] = new $class;
 
 	// Language
-	if( @!include_once(PATH_PLUGINS.$dir_name.'/languages/'.$settings['language'].'.bit') )
-		include_once(PATH_PLUGINS.$dir_name.'/languages/en_US.bit');
+	if (@!include_once(PATH_PLUGINS . $dir_name . '/languages/' . $settings['language'] . '.bit')) {
+		include_once(PATH_PLUGINS . $dir_name . '/languages/en_US.bit');
+	}
 
-	$plugins_all[$class]->set_attributes(
-	array(
-		'name'=>$_PLUGIN_CONFIG['LANG']['NAME'],
-		'description'=>$_PLUGIN_CONFIG['LANG']['DESCRIPTION'],
-		'author'=>$_PLUGIN_CONFIG['DATA']['author'],
-		'version'=>$_PLUGIN_CONFIG['DATA']['version'],
-		'url'=>$_PLUGIN_CONFIG['DATA']['url']
+	$plugins_all[$class]->set_attributes(array(
+		'name' => $_PLUGIN_CONFIG['LANG']['NAME'],
+		'description' => $_PLUGIN_CONFIG['LANG']['DESCRIPTION'],
+		'author' => $_PLUGIN_CONFIG['DATA']['author'],
+		'version' => $_PLUGIN_CONFIG['DATA']['version'],
+		'url' => $_PLUGIN_CONFIG['DATA']['url']
 	));
 
 	// Add plugin dictionary to the general dictionary
@@ -62,26 +61,23 @@ foreach($plugins_on_system as $dir_name)
 	$plugins_all[$class]->set_slug_name($_PLUGIN_CONFIG['LANG']['NAME']);
 
 	// If plugin is installed, set the database and get the position
-	if($plugins_all[$class]->init_db())
-	{
+	if ($plugins_all[$class]->init_db()) {
 		$position = $plugins_all[$class]->get_field_db('position');
 
-		while( isset($plugins_installed[$position]) )
+		while (isset($plugins_installed[$position])) {
 			$position += 100;
+		}
 
 		$plugins_installed[$position] = $plugins_all[$class];
 		$plugins_by_name[$dir_name] = $plugins_all[$class];
 
-		if($where_am_i[0]=='blog')
-		{
-			if($plugins_all[$class]->blog_body())
-			{
+		if ($where_am_i[0] == 'blog') {
+			if ($plugins_all[$class]->blog_body()) {
 				$plugins_sidebar[$position] = $plugins_all[$class];
 			}
 		}
 	}
-	else
-	{
+	else {
 		// Plugins not installed
 		array_push($plugins_not_installed, $plugins_all[$class]);
 	}
@@ -101,5 +97,3 @@ unset($_PLUGIN_CONFIG);
 unset($class);
 unset($position);
 unset($merge);
-
-?>

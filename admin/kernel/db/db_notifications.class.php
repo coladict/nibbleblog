@@ -25,10 +25,8 @@ class DB_NOTIFICATIONS {
 	CONSTRUCTORS
 ========================================================================
 */
-	function DB_NOTIFICATIONS($file, $settings)
-	{
-		if(file_exists($file))
-		{
+	function __construct($file, $settings) {
+		if (file_exists($file)) {
 			$this->file = $file;
 
 			$this->settings = $settings;
@@ -42,76 +40,70 @@ class DB_NOTIFICATIONS {
 PUBLIC METHODS
 ========================================================================
 */
-	public function savetofile()
-	{
-		return( $this->xml->asXML($this->file) );
+	public function savetofile() {
+		return($this->xml->asXML($this->file));
 	}
 
-	public function add($category, $send_email, $args=array())
-	{
+	public function add($category, $send_email, $args = array()) {
 		global $_LANG;
 
-		if( count( $this->xml->notification ) >= NOTIFICATIONS_AMOUNT )
-			unset( $this->xml->notification[0] );
+		if (count($this->xml->notification) >= NOTIFICATIONS_AMOUNT) {
+			unset($this->xml->notification[0]);
+		}
 
 		// Email
-		if($send_email)
-		{
-			if($category=='session_fail')
-			{
+		if ($send_email) {
+			if ($category == 'session_fail') {
 				// Subject
 				$subject = $_LANG['LOGIN_FAILED_ATTEMPT'];
 				// Message
 				$message = Text::replace_assoc(
-						array(
-							'{{BLOG_NAME}}'=>$this->settings['name'],
-							'{{USERNAME}}'=>$args['username'],
-							'{{PASSWORD}}'=>$args['password'],
-							'{{IP}}'=>Net::get_user_ip()
-						),
-						$_LANG['EMAIL_NOTIFICATION_FAIL_LOGIN']
+					array(
+						'{{BLOG_NAME}}' => $this->settings['name'],
+						'{{USERNAME}}' => $args['username'],
+						'{{PASSWORD}}' => $args['password'],
+						'{{IP}}' => Net::get_user_ip()
+					),
+					$_LANG['EMAIL_NOTIFICATION_FAIL_LOGIN']
 				);
 			}
-			elseif($category=='session_start')
-			{
+			else if ($category == 'session_start') {
 				// Subject
 				$subject = $_LANG['NEW_SESSION_STARTED'];
 				// Message
 				$message = Text::replace_assoc(
-						array(
-							'{{BLOG_NAME}}'=>$this->settings['name'],
-							'{{USERNAME}}'=>$args['username'],
-							'{{IP}}'=>Net::get_user_ip()
-						),
-						$_LANG['EMAIL_NOTIFICATION_SESSION_STARTED']
+					array(
+						'{{BLOG_NAME}}' => $this->settings['name'],
+						'{{USERNAME}}' => $args['username'],
+						'{{IP}}' => Net::get_user_ip()
+					),
+					$_LANG['EMAIL_NOTIFICATION_SESSION_STARTED']
 				);
 			}
-			elseif($category=='comment')
-			{
+			else if ($category == 'comment') {
 				// Subject
 				$subject = $_LANG['YOU_HAVE_A_NEW_COMMENT'];
 				// Message
 				$message = Text::replace_assoc(
-						array(
-							'{{BLOG_NAME}}'=>$this->settings['name'],
-							'{{COMMENT}}'=>$args['comment'],
-							'{{AUTHOR_NAME}}'=>$args['author_name'],
-							'{{AUTHOR_EMAIL}}'=>$args['author_email'],
-							'{{IP}}'=>Net::get_user_ip()
-						),
-						$_LANG['EMAIL_NOTIFICATION_NEW_COMMENT']
+					array(
+						'{{BLOG_NAME}}' => $this->settings['name'],
+						'{{COMMENT}}' => $args['comment'],
+						'{{AUTHOR_NAME}}' => $args['author_name'],
+						'{{AUTHOR_EMAIL}}' => $args['author_email'],
+						'{{IP}}' => Net::get_user_ip()
+					),
+					$_LANG['EMAIL_NOTIFICATION_NEW_COMMENT']
 				);
 			}
 
 			$sent = Email::send(array(
-						'from'=>$this->settings['notification_email_from'],
-						'to'=>$this->settings['notification_email_to'],
-						'subject'=>$subject,
-						'message'=>$message
+				'from' => $this->settings['notification_email_from'],
+				'to' => $this->settings['notification_email_to'],
+				'subject' => $subject,
+				'message' => $message
 			));
 		}
-		else
-		{
+		else {
 			$sent = false;
 		}
 
@@ -131,13 +123,11 @@ PUBLIC METHODS
 		return true;
 	}
 
-	public function get_all()
-	{
+	public function get_all() {
 		include(FILE_KEYS);
 
 		$tmp_array = array();
-		foreach( $this->xml->notification as $notification )
-		{
+		foreach ($this->xml->notification as $notification) {
 			// Decrypt the user IP
 			$user_ip = Crypt::decrypt((string) $notification->getAttribute('ip'), $_KEYS[0]);
 
@@ -146,11 +136,11 @@ PUBLIC METHODS
 			$row['mail']			= (bool) $notification->getAttribute('mail');
 			$row['message_key']		= (string) $notification->getAttribute('message_key');
 			$row['date']			= (string) $notification->getAttribute('date');
-			$row['ip'] 				= $user_ip;
+			$row['ip']				= $user_ip;
 
 			array_push($tmp_array, $row);
 		}
-		return( array_reverse($tmp_array) );
+		return(array_reverse($tmp_array));
 	}
 
 /*
@@ -161,5 +151,3 @@ PUBLIC METHODS
 
 
 } // END Class
-
-?>

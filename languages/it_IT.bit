@@ -258,7 +258,7 @@ $_LANG['PAGE_HAS_BEEN_PUBLISHED_SUCCESSFULLY'] = 'La pagina è stata pubblicata 
 $_LANG['REQUEST_NEW_PASSWORD'] = 'Richiedi una nuova password';
 $_LANG['WE_ARE_SENT_YOU_AN_EMAIL'] = 'Ti abbiamo inviato un\'email. Se occorre controlla lo spam.';
 $_LANG['AN_ERROR_OCURRED_WHILE'] = 'Si è verificato un errore nell\'invio dell\'email.';
-$_LANG['EMAIL_NOTIFICATION_FAIL_LOGIN'] = ' <p>Questa è una notifica dal tuo blog {{BLOG_NAME}}</p> <p>Qualcuno vuole accedere al tuo blog con il nome utente: {{USERNAME}} e la Password: {{PASSWORD}}</p> <p>L\'indirizzo IP {{IP}} con il quale  vuole connettersi.</p> ';
+$_LANG['EMAIL_NOTIFICATION_FAIL_LOGIN'] = ' <p>Questa è una notifica dal tuo blog {{BLOG_NAME}}</p> <p>Qualcuno vuole accedere al tuo blog con il nome utente: {{USERNAME}} e la Password: {{PASSWORD}}</p> <p>L\'indirizzo IP {{IP}} con il quale vuole connettersi.</p> ';
 $_LANG['EMAIL_NOTIFICATION_SESSION_STARTED'] = '<p>Questa è una notifica dal tuo blog {{BLOG_NAME}}</p> <p>Connessione riuscita all\'area amministrazione con il nome utente: {{USERNAME}}</p> <p>L\'indirizzo IP {{IP}} con il quale vuole connettersi.</p> ';
 $_LANG['EMAIL_NOTIFICATION_NEW_COMMENT'] = ' <p>Questa è una notifica dal tuo blog {{BLOG_NAME}}</p> <p>Hai un uovo commento sul blog.</p> <p>{{COMMENT}}</p> <p>Autore: {{AUTHOR_NAME}}</p> <p>Email: {{AUTHOR_EMAIL}}</p> <p>IP: {{IP}}</p> ';
 $_LANG['EMAIL_NOTIFICATION_FORGOT_PASSWORD'] = ' <p>Questa è una notifica dal tuo blog {{BLOG_NAME}}</p> <p>Hai dimenticato la password? Nessun problema!</p> <p>Clicca questo link: {{FORGOT_LINK}}</p> ';
@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = 'Categorie spazzatura';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = 'Opzioni avenzate di pubblicazione dei contenuti.';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Indirizzo assoluto del tuo blog. Per esempio http://www.dominio.it/cartella/ ';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugin disponibili per l\'installazione';
-
-?>

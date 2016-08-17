@@ -11,28 +11,22 @@
 
 class Redirect {
 
-	public static function url($html_location)
-	{
-		if(!headers_sent())
-		{
+	public static function url($html_location) {
+		if (!headers_sent()) {
 			header("Location:".$html_location, TRUE, 302);
 			exit;
 		}
 
-		exit('<meta http-equiv="refresh" content="0; url='.$html_location.'" />');
+		exit ('<meta http-equiv="refresh" content="0; url=' . $html_location . '" />');
 	}
 
-	public static function controller($base, $controller, $action, $parameters = array())
-	{
+	public static function controller($base, $controller, $action, $parameters = array()) {
 		$url = '';
 
-		foreach( $parameters as $key=>$value )
-		{
-			$url .= '&'.$key.'='.$value;
+		foreach ($parameters as $key => $value) {
+			$url .= '&' . $key . '=' . $value;
 		}
 
-		self::url(HTML_PATH_ROOT.$base.'.php?controller='.$controller.'&action='.$action.$url);
+		self::url(HTML_PATH_ROOT . $base . '.php?controller=' . $controller . '&action=' . $action . $url);
 	}
 }
-
-?>

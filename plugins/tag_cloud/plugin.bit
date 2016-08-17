@@ -3,38 +3,35 @@
 // PLUGIN INFO
 // =====================================================================
 $_PLUGIN_CONFIG['DATA'] = array(
-	'author'=>'Diego Najar',
-	'version'=>'3.7',
-	'url'=>'http://www.nibbleblog.com'
+	'author' => 'Diego Najar',
+	'version' => '3.7',
+	'url' => 'http://www.nibbleblog.com'
 );
 
 // =====================================================================
 // PLUGIN CLASS
 // =====================================================================
-class PLUGIN_TAG_CLOUD extends Plugin
-{
-	function __construct()
-	{
+class PLUGIN_TAG_CLOUD extends Plugin {
+
+	function __construct() {
 		parent::__construct();
 
-		$this->fields = array('min_size'=>'12', 'max_size'=>40);
+		$this->fields = array('min_size' => '12', 'max_size' => 40);
 	}
 
-	public function dashboard_config()
-	{
+	public function dashboard_config() {
 		global $Language;
 
-		$html  = Html::label( array('content'=>$Language->get('MIN_SIZE_IN_PX')) );
-		$html .= Html::input( array('name'=>'min_size', 'type'=>'text', 'value'=>$this->database('min_size')) );
+		$html = Html::label(array('content' => $Language->get('MIN_SIZE_IN_PX')));
+		$html .= Html::input(array('name' => 'min_size', 'type' => 'text', 'value' => $this->database('min_size')));
 
-		$html .= Html::label( array('content'=>$Language->get('MAX_SIZE_IN_PX')) );
-		$html .= Html::input( array('name'=>'max_size', 'type'=>'text', 'value'=>$this->database('max_size')) );
+		$html .= Html::label(array('content' => $Language->get('MAX_SIZE_IN_PX')));
+		$html .= Html::input(array('name' => 'max_size', 'type' => 'text', 'value' => $this->database('max_size')));
 
 		return $html;
 	}
 
-	public function blog_body()
-	{
+	public function blog_body() {
 		global $_DB_TAGS;
 
 		// Get all tags
@@ -45,8 +42,7 @@ class PLUGIN_TAG_CLOUD extends Plugin
 
 		$html = '';
 
-		foreach($cloud as $tag=>$val)
-		{
+		foreach ($cloud as $tag => $val) {
 			$amount = $val['amount'] + $this->database('min_size');
 
 			// Max size 40px
@@ -55,14 +51,12 @@ class PLUGIN_TAG_CLOUD extends Plugin
 			// Min size 12px
 			$size = max($size, $this->database('min_size'));
 
-			$style = 'font-size:'.$size.'px; margin-right: 5px; display: inline-block;';
+			$style = 'font-size:' . $size . 'px; margin-right: 5px; display: inline-block;';
 
-			$html .= '<a class="level_'.$size.'" style="'.$style.'" href="'.Url::tag($tag).'">'.$val['name_human'].'</a>';
+			$html .= '<a class="level_' . $size . '" style="' . $style . '" href="' . Url::tag($tag) . '">' . $val['name_human'] . '</a>';
 		}
 
 		return $html;
 	}
 
 }
-
-?>

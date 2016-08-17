@@ -10,27 +10,22 @@
  *
 */
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-	foreach($_POST as $key=>$value)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	foreach ($_POST as $key => $value) {
 		$Comment->set_form(Validation::sanitize_html($key), Validation::sanitize_html($value));
+	}
 
 	// Check: fields are complete
-	if( Text::is_empty($_POST['author_email']) || Text::is_empty($_POST['content']) )
-	{
+	if (Text::is_empty($_POST['author_email']) || Text::is_empty($_POST['content'])) {
 		Session::set_alert($_LANG['PLEASE_COMPLETE_ALL_FIELDS']);
 	}
-	else
-	{
+	else {
 		// XSS protection
-		if(isset($_POST['hash']))
-		{
+		if (isset($_POST['hash'])) {
 			// XSS protection
-			if($Comment->get_hash()===Validation::sanitize_html($_POST['hash']))
-			{
+			if ($Comment->get_hash() === Validation::sanitize_html($_POST['hash'])) {
 				// Post allows comments
-				if(isset($posts[0]['id']) && isset($posts[0]['allow_comments']))
-				{
+				if (isset($posts[0]['id']) && isset($posts[0]['allow_comments'])) {
 					$safe					= array();
 					$safe['id_post'] 		= $posts[0]['id'];
 					$safe['author_name']	= $Comment->form('author_name');
@@ -39,9 +34,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 					$safe['author_ip']		= Net::get_user_ip();
 
 					// Check: Anti-spam / Approve / Sanitize
-					if($Comment->add($safe)===false)
+					if ($Comment->add($safe) === false) {
 						Session::set_alert($_LANG['YOUR_COMMENT_IS_UNDER_REVIEW_IT_WILL_BE']);
-
+					}
 				}
 			}
 		}
@@ -49,6 +44,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 // Set hash comment
-$Comment->set_form('hash', Crypt::get_hash(time(),time()) );
-
-?>
+$Comment->set_form('hash', Crypt::get_hash(time(),time()));

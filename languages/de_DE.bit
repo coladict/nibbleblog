@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = 'Slug der Kategorien';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = 'Fortgeschrittene Einstellungen beim Veröffentlichen';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Absolute Adresse deines Blogs z.B.http://www.domain.de/verzeichnis/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Installierbare Plugins';
-
-?>

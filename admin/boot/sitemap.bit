@@ -11,4 +11,3 @@ require_once('rules/5-url.bit');
 require_once('rules/8-posts_pages_sitemap.bit');
 
 require_once('rules/99-misc.bit');
-?>

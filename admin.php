@@ -13,8 +13,7 @@
 header('Content-type: text/html; charset=utf-8');
 
 // Check installation
-if( !file_exists('content/private') )
-{
+if (!file_exists('content/private')) {
 	header('Location:install.php');
 	exit('<a href="./install.php">click to install Nibbleblog</a>');
 }
@@ -23,11 +22,10 @@ if( !file_exists('content/private') )
 require('admin/boot/admin.bit');
 
 // Plugins
-foreach($plugins as $plugin)
+foreach ($plugins as $plugin) {
 	$plugin->boot();
+}
 
 // Load the controller and template / view
-require(PATH_ADMIN_CONTROLLER.$layout['controller']);
-require(PATH_ADMIN_TEMPLATES.$layout['template']);
-
-?>
+require(PATH_ADMIN_CONTROLLER . $layout['controller']);
+require(PATH_ADMIN_TEMPLATES . $layout['template']);

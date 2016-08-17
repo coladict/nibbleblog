@@ -1,17 +1,14 @@
 <?php
 
 // There are no posts
-if(empty($posts))
-{
+if (empty($posts)) {
 	echo '<article>';
-	echo '<h2>'.$Language->get('there are no posts').'</h2>';
+	echo '<h2>' . $Language->get('there are no posts') . '</h2>';
 	echo '</article>';
 }
-else
-{
+else {
 	// Post
-	foreach($posts as $post)
-	{
+	foreach ($posts as $post) {
 		echo '<article>';
 
 			include('includes/post_head.bit');
@@ -24,5 +21,3 @@ else
 
 // Pager
 include('includes/pager.bit');
-
-?>

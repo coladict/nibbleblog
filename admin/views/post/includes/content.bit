@@ -1,9 +1,10 @@
 <?php
+
 $value = isset($post_edit['content'][0]) ? htmlspecialchars($post_edit['content'][0]) : '';
 
-echo Html::div_open( array('class'=>'form_block') );
+echo Html::div_open(array('class' => 'form_block'));
 
-	echo Html::textarea( array('id'=>'js_content', 'name'=>'content', 'content'=>$value, 'class'=>'wysiwyg') );
+	echo Html::textarea(array('id' => 'js_content', 'name' => 'content', 'content' => $value, 'class' => 'wysiwyg'));
 
 echo Html::div_close();
 
@@ -15,8 +16,8 @@ include('nb_code.bit');
 
 ?>
 
-<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS.'tinymce/jquery.tinymce.min.js' ?>"></script>
-<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS.'tinymce/tinymce.min.js' ?>"></script>
+<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/jquery.tinymce.min.js' ?>"></script>
+<script charset="utf-8" src="<?php echo HTML_PATH_ADMIN_JS . 'tinymce/tinymce.min.js' ?>"></script>
 
 <script>
 
@@ -29,12 +30,12 @@ $(document).ready(function() {
 	tinymce.init({
 		selector : "textarea#js_content",
 		theme: "modern",
-		height:"400px",
-		width:"100%",
+		height: "400px",
+		width: "100%",
 		content_css: HTML_PATH_ADMIN_TEMPLATES+"easy4/css/tinymce.css",
 		plugins: [
 			"autolink link image lists hr anchor pagebreak",
-			"searchreplace code fullscreen  media nonbreaking",
+			"searchreplace code fullscreen media nonbreaking",
 			"table directionality paste textcolor code"
 		],
 		toolbar: "undo redo | styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link media nb-image nb-code | forecolor backcolor table | pagebreak fullscreen code",
@@ -45,7 +46,7 @@ $(document).ready(function() {
 			{title : 'Preformatted', block : 'pre'},
 			{title : 'Console', block : 'pre', classes: 'nb-console'}
 		],
-		<?php if(file_exists(PATH_ADMIN_JS.'tinymce/langs/'.$settings['locale'].'.js')) echo 'language : "'.$settings['locale'].'",' ?>
+		<?php if(file_exists(PATH_ADMIN_JS . 'tinymce/langs/' . $settings['locale'] . '.js')) echo 'language : "' . $settings['locale'] . '",' ?>
 		statusbar: false,
 		menubar:false,
 		resize: false,
@@ -73,8 +74,7 @@ $(document).ready(function() {
 				title: 'Nibbleblog media',
 				label: 'Nb media',
 				icon: 'image',
-				onclick: function()
-				{
+				onclick: function() {
 					$('#nb_media').reveal();
 				}
 			});
@@ -83,8 +83,7 @@ $(document).ready(function() {
 				title: 'Nibbleblog code',
 				label: 'Nb code',
 				icon: 'template',
-				onclick: function()
-				{
+				onclick: function() {
 					$('#nb_code_modal').reveal();
 				}
 			});
@@ -98,14 +97,11 @@ $(document).ready(function() {
 
 <script>
 
-function insert_content(text)
-{
-	if(typeof tinymce != 'undefined')
-	{
+function insert_content(text) {
+	if (typeof tinymce != 'undefined') {
 		tinymce.execCommand("mceInsertContent", false, text);
 	}
-	else
-	{
+	else {
 		var content = $("#js_content").val();
 		$("#js_content").val(content + "\n" + text + "\n");
 	}

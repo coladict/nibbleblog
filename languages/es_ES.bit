@@ -189,7 +189,7 @@ $_LANG['DISAPPROVE'] = 'Desaprobar';
 $_LANG['APPROVE_SPAM_DETECTED'] = 'Aprobar (se detecto spam)';
 $_LANG['APPROVE'] = 'Aprobar';
 $_LANG['API_KEY'] = 'Api Key';
-$_LANG['INSERT_THE_API_KEY_HERE'] = 'Ingrese la Api Key.  Si no tiene una aun, o no sabe lo que es, por favor verifique la wiki de Nibbleblog.';
+$_LANG['INSERT_THE_API_KEY_HERE'] = 'Ingrese la Api Key. Si no tiene una aun, o no sabe lo que es, por favor verifique la wiki de Nibbleblog.';
 $_LANG['SPAM_MONITOR'] = 'Monitor de spam';
 $_LANG['ENABLE_THIS_FEATURE_TO_PROTECT_AGAINST_XSS'] = 'Habilite esta opción para eliminar todo código HTML que el usuario ingrese, esto sirve para evitar Cross-site scriptiong (XSS).';
 $_LANG['ENABLE_THIS_FEATURE_TO_MODERATE_COMMENTS'] = 'Habilite esta opción para moderar los comentarios antes de que sean publicados.';
@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = 'Slug de la categoría';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = 'Opciones avanzadas al momento de publicar contenido.';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'URL absoluta del blog. Ejemplo http://www.domain.com/directorio/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugins disponibles';
-
-?>

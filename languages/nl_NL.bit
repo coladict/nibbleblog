@@ -284,5 +284,3 @@ $_LANG['CATEGORY_SLUG'] = 'Categorie slug';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = 'Geavanceerde opties bij het ​​publiceren van content.';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Absolute URL-adres van uw blog. voorbeeld http://www.domain.com/directory/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugins beschikbaar voor installatie';
-
-?>

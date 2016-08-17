@@ -1,22 +1,16 @@
 <?php
 
-if($post['allow_comments'])
-{
-	if( $Comment->disqus_enabled() )
-	{
+if ($post['allow_comments']) {
+	if ($Comment->disqus_enabled()) {
 		// Disqus comments
 		include('comments_disqus.bit');
 	}
-	elseif( $Comment->facebook_enabled() )
-	{
+	else if ($Comment->facebook_enabled()) {
 		// Facebook comments
 		include('comments_facebook.bit');
 	}
-	else
-	{
+	else {
 		// Nibbleblog comments
 		include('comments_nibbleblog.bit');
 	}
 }
-
-?>

@@ -11,26 +11,20 @@
 
 class Cookie {
 
-	public static function get($name)
-	{
-		if(isset($_COOKIE[$name]))
-		{
+	public static function get($name) {
+		if (isset($_COOKIE[$name])) {
 			return($_COOKIE[$name]);
 		}
 
 		return(false);
 	}
 
-	public static function add($name, $value, $expire = 525600)
-	{
+	public static function add($name, $value, $expire = 525600) {
 		setcookie($name, $value, time() + ($expire * 60));
 	}
 
-	public static function is_set($name)
-	{
+	public static function is_set($name) {
 		return(isset($_COOKIE[$name]));
 	}
 
 }
-
-?>

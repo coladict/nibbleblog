@@ -22,4 +22,3 @@ require_once('rules/98-constants.bit');
 require_once('rules/98-blog.bit');
 
 require_once('rules/99-misc.bit');
-?>

@@ -284,6 +284,4 @@ $_LANG['CATEGORY_SLUG'] = 'Identifiant de la catégorie';
 $_LANG['INSTALLED_PLUGINS'] = 'Plugins installés';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugins disponibles pour une installation';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Adresse URL absolue de votre blog. Exemple http://www.domain.com/directory/';
-$_LANG['ABSOLUTE_ADDRESS_THAT_CONTAINS_THE_BLOGS_FILE_SYSTEM'] = 'Adresse absolue de l\'emplacement des fichiers, si vous placez les fichiers de Nibbleblog à la racine de votre hébergement, il vous suffit de mettre un "/", et si vous les placez dans un répertoire, elle devrait ressembler à  "/nom_du_répertoire/".';
-
-?>
+$_LANG['ABSOLUTE_ADDRESS_THAT_CONTAINS_THE_BLOGS_FILE_SYSTEM'] = 'Adresse absolue de l\'emplacement des fichiers, si vous placez les fichiers de Nibbleblog à la racine de votre hébergement, il vous suffit de mettre un "/", et si vous les placez dans un répertoire, elle devrait ressembler à "/nom_du_répertoire/".';

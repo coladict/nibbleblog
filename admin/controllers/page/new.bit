@@ -3,53 +3,59 @@
 // =====================================================================
 //	POST
 // =====================================================================
-if( $_SERVER['REQUEST_METHOD'] == 'POST' )
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$safe = array(
-		'title'=>'',
-		'content'=>'',
-		'description'=>'',
-		'keywords'=>'',
-		'position'=>0,
-		'slug'=>'page'
+		'title' => '',
+		'content' => '',
+		'description' => '',
+		'keywords' => '',
+		'position' => 0,
+		'slug' => 'page'
 	);
 
 	// Mode
-	if( isset($_POST['button_draft']) )
+	if (isset($_POST['button_draft'])) {
 		$safe['mode'] = 'draft';
+	}
 
 	// Title
-	if(isset($_POST['title']))
+	if (isset($_POST['title'])) {
 		$safe['title'] = Validation::sanitize_html($_POST['title']);
+	}
 
 	// Content
-	if(isset($_POST['content']))
+	if (isset($_POST['content'])) {
 		$safe['content'] = $_POST['content'];
+	}
 
 	// keywords
-	if(isset($_POST['keywords']))
+	if (isset($_POST['keywords'])) {
 		$safe['keywords'] = $_POST['keywords'];
+	}
 
 	// Position
-	if(isset($_POST['position']))
+	if (isset($_POST['position'])) {
 		$safe['position'] = $_POST['position'];
+	}
 
 	// Description for SEO
-	if( isset($_POST['description']) )
-		$safe['description'] = Validation::sanitize_html( $_POST['description'] );
+	if (isset($_POST['description'])) {
+		$safe['description'] = Validation::sanitize_html($_POST['description']);
+	}
 
 	// Slug
-	if(!empty($_POST['slug']))
+	if (!empty($_POST['slug'])) {
 		$safe['slug'] = $_POST['slug'];
-	elseif(!empty($safe['title']))
+	}
+	else if (!empty($safe['title'])) {
 		$safe['slug'] = Text::clean_url($safe['title'], '-', $translit_enable);
+	}
 
 	// Add page
 	$id = $_DB_PAGES->add($safe);
 
-	if($id!==false)
-	{
+	if ($id !== false) {
 		Session::set_alert($_LANG['PAGE_HAS_BEEN_PUBLISHED_SUCCESSFULLY']);
 
 		Redirect::controller('admin', 'page', 'list');
@@ -61,5 +67,3 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' )
 // =====================================================================
 $count = count($_DB_PAGES->get_all()) + 1;
 $ctrlv['positions_html'] = array_combine(range(1, $count), range(1, $count));
-
-?>

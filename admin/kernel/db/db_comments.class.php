@@ -31,10 +31,8 @@ VARIABLES
 CONSTRUCTORS
 ======================================================================================
 */
-	function DB_COMMENTS($file, $settings)
-	{
-		if(file_exists($file))
-		{
+	function __construct($file, $settings) {
+		if (file_exists($file)) {
 			$this->file = $file;
 
 			$this->settings = $settings;
@@ -53,14 +51,12 @@ CONSTRUCTORS
 PUBLIC METHODS
 ======================================================================================
 */
-	public function savetofile()
-	{
-		return( $this->xml->asXML($this->file) );
+	public function savetofile() {
+		return($this->xml->asXML($this->file));
 	}
 
-	public function get_last_insert_id()
-	{
-		return( $this->last_insert_id );
+	public function get_last_insert_id() {
+		return($this->last_insert_id);
 	}
 
 	/*
@@ -69,8 +65,7 @@ PUBLIC METHODS
 	 * $args = array('author_ip', 'author_email', 'author_name', 'content', 'id_post', 'type')
 	 *
 	 */
-	public function add($args)
-	{
+	public function add($args) {
 		global $Login;
 
 		// Template
@@ -105,21 +100,13 @@ PUBLIC METHODS
 		$new_id = $this->last_insert_id = $this->get_autoinc();
 
 		// User ID
-		if($Login->is_logged())
-		{
-			$id_user = $Login->get_user_id();
-		}
-		else
-		{
-			$id_user = 'NULL';
-		}
+		$id_user = $Login->is_logged() ? $Login->get_user_id() : 'NULL';
 
 		// Filename for new post
 		$filename = $new_id . '.' . $args['id_post'] . '.' . $id_user . '.' . $args['type'] . '.' . $time_filename . '.xml';
 
 		// Save to file
-		if( $new_obj->asXml( PATH_COMMENTS . $filename ) )
-		{
+		if ($new_obj->asXml(PATH_COMMENTS . $filename)) {
 			// Increment the AutoINC
 			$this->set_autoinc(1);
 
@@ -132,125 +119,106 @@ PUBLIC METHODS
 		return false;
 	}
 
-	public function get($args)
-	{
+	public function get($args) {
 		$this->set_file($args['id']);
 
-		if($this->files_count > 0)
-		{
-			return( $this->get_items( $this->files[0] ) );
+		if ($this->files_count > 0) {
+			return($this->get_items($this->files[0]));
 		}
 
 		return false;
 	}
 
-	public function get_list_by_post($args)
-	{
+	public function get_list_by_post($args) {
 		$this->set_files_by_post($args['id_post']);
 
 		$tmp_array = array();
-		foreach($this->files as $file)
-		{
-			array_push( $tmp_array, $this->get_items( $file ) );
+		foreach ($this->files as $file) {
+			array_push($tmp_array, $this->get_items($file));
 		}
 
 		return($tmp_array);
 	}
 
-	public function get_list_by_page($args)
-	{
+	public function get_list_by_page($args) {
 		// Set the list of comments
 		$this->set_files();
 
-		if($this->files_count > 0)
-		{
-			return( $this->get_list_by($args['page_number'], $args['amount']) );
+		if ($this->files_count > 0) {
+			return ($this->get_list_by($args['page_number'], $args['amount']));
 		}
 
 		return array();
 	}
 
-	public function get_last($amount)
-	{
+	public function get_last($amount) {
 		$this->set_files();
 
 		$tmp_array = array();
 
 		$total = min($amount, $this->files_count);
 
-		for($i = 0; $i < $total; $i++)
-		{
-			array_push( $tmp_array, $this->get_items( $this->files[$i] ) );
+		for ($i = 0; $i < $total; $i++) {
+			array_push($tmp_array, $this->get_items($this->files[$i]));
 		}
 
 		return($tmp_array);
 	}
 
-	public function delete($args)
-	{
-		$this->set_file( $args['id'] );
+	public function delete($args) {
+		$this->set_file($args['id']);
 
-		if($this->files_count > 0)
-		{
-			return(unlink( PATH_COMMENTS . $this->files[0] ));
+		if ($this->files_count > 0) {
+			return(unlink(PATH_COMMENTS . $this->files[0] ));
 		}
 
 		return(false);
 	}
 
-	public function delete_all_by_post($args)
-	{
+	public function delete_all_by_post($args) {
 		$this->set_files_by_post($args['id_post'], '*');
 
-		foreach($this->files as $file)
-		{
-			unlink( PATH_COMMENTS . $file );
+		foreach ($this->files as $file) {
+			unlink(PATH_COMMENTS . $file);
 		}
 	}
 
-	public function get_count()
-	{
+	public function get_count() {
 		return($this->files_count);
 	}
 
-	public function get_settings()
-	{
+	public function get_settings() {
 		$tmp_array = array();
-		$tmp_array['comments_enabled'] 		= (int) $this->xml->getChild('comments_enabled');
-		$tmp_array['monitor_enable'] 		= (int) $this->xml->getChild('monitor_enable');
-		$tmp_array['monitor_api_key'] 		= (string) $this->xml->getChild('monitor_api_key');
-		$tmp_array['monitor_spam_control'] 	= (float) $this->xml->getChild('monitor_spam_control');
-		$tmp_array['monitor_auto_delete'] 	= (float) $this->xml->getChild('monitor_auto_delete');
-		$tmp_array['sanitize'] 				= (int) $this->xml->getChild('sanitize');
-		$tmp_array['moderate'] 				= (int) $this->xml->getChild('moderate');
+		$tmp_array['comments_enabled']		= (int) $this->xml->getChild('comments_enabled');
+		$tmp_array['monitor_enable']		= (int) $this->xml->getChild('monitor_enable');
+		$tmp_array['monitor_api_key']		= (string) $this->xml->getChild('monitor_api_key');
+		$tmp_array['monitor_spam_control']	= (float) $this->xml->getChild('monitor_spam_control');
+		$tmp_array['monitor_auto_delete']	= (float) $this->xml->getChild('monitor_auto_delete');
+		$tmp_array['sanitize']				= (int) $this->xml->getChild('sanitize');
+		$tmp_array['moderate']				= (int) $this->xml->getChild('moderate');
 		$tmp_array['disqus_shortname']		= $this->xml->getChild('disqus_shortname');
 		$tmp_array['facebook_appid']		= $this->xml->getChild('facebook_appid');
 
 		return($tmp_array);
 	}
 
-	public function set_settings($args)
-	{
-		foreach($args as $name=>$value)
-		{
+	public function set_settings($args) {
+		foreach ($args as $name => $value) {
 			$this->xml->setChild($name, $value);
 		}
 
 		return(true);
 	}
 
-	public function approve($args)
-	{
+	public function approve($args) {
 		return($this->rename_by_position($args['id'], 3, 'NULL'));
 	}
 
-	public function unapprove($args)
-	{
+	public function unapprove($args) {
 		return($this->rename_by_position($args['id'], 3, 'unapprove'));
 	}
 
-	public function spam($args)
-	{
+	public function spam($args) {
 		return($this->rename_by_position($args['id'], 3, 'spam'));
 	}
 
@@ -259,13 +227,11 @@ PUBLIC METHODS
 PRIVATE METHODS
 ======================================================================================
 */
-	private function rename_by_position($id, $position, $string)
-	{
+	private function rename_by_position($id, $position, $string) {
 		$this->set_file($id);
 
 		// File not found
-		if($this->files_count == 0)
-		{
+		if ($this->files_count == 0) {
 			return(false);
 		}
 
@@ -275,65 +241,56 @@ PRIVATE METHODS
 		$explode[$position] = $string;
 		$implode = implode('.', $explode);
 
-		return( rename(PATH_COMMENTS.$filename, PATH_COMMENTS.$implode) );
+		return(rename(PATH_COMMENTS . $filename, PATH_COMMENTS . $implode));
 	}
 
-	private function get_autoinc()
-	{
-		return( (int) $this->xml['autoinc'] );
+	private function get_autoinc() {
+		return((int) $this->xml['autoinc']);
 	}
 
-	private function set_autoinc($value = 0)
-	{
+	private function set_autoinc($value = 0) {
 		$this->xml['autoinc'] = $value + $this->get_autoinc();
 	}
 
-	private function set_file($id)
-	{
-		$this->files = Filesystem::ls(PATH_COMMENTS, $id.'.*.*.*.*.*.*.*.*.*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+	private function set_file($id) {
+		$this->files = Filesystem::ls(PATH_COMMENTS, $id . '.*.*.*.*.*.*.*.*.*', 'xml', false, false, true);
+		$this->files_count = count($this->files);
 	}
 
 	// setea los parametros de la clase
 	// obtiene todos los archivos post
-	private function set_files()
-	{
+	private function set_files() {
 		$this->files = Filesystem::ls(PATH_COMMENTS, '*', 'xml', false, false, true);
-		$this->files_count = count( $this->files );
+		$this->files_count = count($this->files);
 	}
 
 	// Setea los comentarios de un post en particular
 	// File name: IDComment.IDPost.IDUser.IDOther.YYYY.MM.DD.HH.mm.ss.xml
-	private function set_files_by_post($id_post, $type='NULL')
-	{
-		$this->files = Filesystem::ls(PATH_COMMENTS, '*.'.$id_post.'.*.'.$type.'.*.*.*.*.*.*', 'xml', false, true, true);
-		$this->files_count = count( $this->files );
+	private function set_files_by_post($id_post, $type='NULL') {
+		$this->files = Filesystem::ls(PATH_COMMENTS, '*.' . $id_post . '.*.' . $type . '.*.*.*.*.*.*', 'xml', false, true, true);
+		$this->files_count = count($this->files);
 	}
 
-	private function get_list_by($page_number, $amount)
-	{
+	private function get_list_by($page_number, $amount) {
 		$init = (int) $amount * $page_number;
-		$end  = (int) min( ($init + $amount - 1), $this->files_count - 1 );
+		$end = (int) min(($init + $amount - 1), ($this->files_count - 1));
 
-		$outrange = $init<0 ? true : $init > $end;
+		$outrange = $init < 0 ? true : ($init > $end);
 
 		$tmp_array = array();
 
-		if( !$outrange )
-		{
-			for($init; $init <= $end; $init++)
-			{
-				array_push( $tmp_array, $this->get_items( $this->files[$init] ) );
+		if (!$outrange) {
+			for ($init; $init <= $end; $init++) {
+				array_push($tmp_array, $this->get_items($this->files[$init]));
 			}
 		}
 
-		return( $tmp_array );
+		return($tmp_array);
 	}
 
 	// Return the items from a comment
 	// File name: IDComment.IDPost.IDUser.NULL.YYYY.MM.DD.HH.mm.ss.xml
-	private function get_items($file)
-	{
+	private function get_items($file) {
 		$xml = new NBXML(PATH_COMMENTS . $file, 0, TRUE, '', FALSE);
 
 		$file_info = explode('.', $file);
@@ -357,13 +314,11 @@ PRIVATE METHODS
 		$tmp_array['author_name']		= (string) $xml->getChild('author_name');
 		$tmp_array['content']			= (string) $xml->getChild('content');
 		$tmp_array['pub_date_unix']		= (string) $xml->getChild('pub_date');
-		$tmp_array['highlight']			= (bool) ((int)$xml->getChild('content')==1);
+		$tmp_array['highlight']			= (bool) ((int)$xml->getChild('content') == 1);
 
-		$tmp_array['pub_date'] = Date::format($tmp_array['pub_date_unix'], $this->settings['timestamp_format']);
+		$tmp_array['pub_date']			= Date::format($tmp_array['pub_date_unix'], $this->settings['timestamp_format']);
 
-		return( $tmp_array );
+		return($tmp_array);
 	}
 
 } // END Class
-
-?>

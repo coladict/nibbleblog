@@ -11,19 +11,14 @@
 */
 
 // Prevent CSRF
-if( ($_SERVER['REQUEST_METHOD'] == 'POST') && $Login->is_logged() )
-{
+if (($_SERVER['REQUEST_METHOD'] == 'POST') && $Login->is_logged()) {
 	$token = isset($_POST['token']) ? Validation::sanitize_html($_POST['token']) : false;
 
-	if( !Session::validFormToken($token) )
-	{
+	if (!Session::validFormToken($token)) {
 		$Login->logout();
-		Redirect::controller('admin','user','login');
+		Redirect::controller('admin', 'user', 'login');
 	}
-	else
-	{
+	else {
 		unset($_POST['token']);
 	}
 }
-
-?>

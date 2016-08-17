@@ -1,18 +1,15 @@
 <?php
 
 // Quote post
-if($post['type']=='quote')
-{
-	echo '<blockquote>'.$post['quote'].'</blockquote>';
+if ($post['type'] == 'quote') {
+	echo '<blockquote>' . $post['quote'] . '</blockquote>';
 }
-else
-{
+else {
 	// Video post
-	if($post['type']=='video')
-	{
+	if ($post['type'] == 'video') {
 		$video_info = Video::video_get_info($post['video']);
 
-		echo '<div class="fitvid">'.$video_info['embed'].'</div>';
+		echo '<div class="fitvid">' . $video_info['embed'] . '</div>';
 	}
 
 	// Video and Simple post
@@ -20,12 +17,12 @@ else
 }
 
 // Show tags
-if(!empty($post['tags']))
-{
+if (!empty($post['tags'])) {
 	$tags = $post['tags'];
 
-	foreach($tags as $key=>$tag)
-		$tags[$key] = '<a class="tag" href="'.Url::tag($tag['name']).'">'.$tag['name_human'].'</a>';
+	foreach ($tags as $key => $tag) {
+		$tags[$key] = '<a class="tag" href="' . Url::tag($tag['name']) . '">' . $tag['name_human'] . '</a>';
+	}
 
 	$tags = implode(', ',$tags);
 
@@ -36,5 +33,3 @@ if(!empty($post['tags']))
 		echo '</li>';
 	echo '</ul>';
 }
-
-?>

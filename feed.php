@@ -5,29 +5,27 @@ require('admin/boot/feed.bit');
 
 // Get the last update (the date of the last published post)
 $updated = Date::atom(time());
-if(isset($posts[0]))
-{
+if (isset($posts[0])) {
 	$last_post = $posts[0];
 	$updated = Date::atom($last_post['pub_date_unix']);
 }
 
 // Get the domain name
 $domain = parse_url($settings['url']);
-$domain = 'http://'.$domain['host'];
+$domain = 'http://' . $domain['host'];
 
 // =====================================================================
 // ATOM Feed
 // =====================================================================
-$rss = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL;
-$rss.= '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL;
-$rss.= '<title>'.$settings['name'].'</title>' . PHP_EOL;
-$rss.= '<subtitle>'.$settings['slogan'].'</subtitle>' . PHP_EOL;
-$rss.= '<link href="'.Url::atom().'" rel="self" />' . PHP_EOL;
-$rss.= '<id>'.Url::atom().'</id>'. PHP_EOL;
-$rss.= '<updated>'.$updated.'</updated>' . PHP_EOL;
+$rss = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL
+		. '<feed xmlns="http://www.w3.org/2005/Atom">' . PHP_EOL
+		. '<title>'.$settings['name'] . '</title>' . PHP_EOL
+		. '<subtitle>'.$settings['slogan'] . '</subtitle>' . PHP_EOL
+		. '<link href="'.Url::atom() . '" rel="self" />' . PHP_EOL
+		. '<id>' . Url::atom() . '</id>' . PHP_EOL
+		. '<updated>' . $updated . '</updated>' . PHP_EOL;
 
-foreach($posts as $post)
-{
+foreach ($posts as $post) {
 	// Post, absolute permalink
 	$permalink = Post::permalink(true);
 
@@ -60,5 +58,3 @@ foreach($posts as $post)
 $rss.= '</feed>';
 
 echo $rss;
-
-?>

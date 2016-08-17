@@ -36,18 +36,18 @@ $(document).ready(function() {
 //
 //	FUNCTIONS
 //
-	function set_timer()
-	{
+	function set_timer() {
 		$("#js_button_save").removeClass().addClass("save");
 
 		window.clearTimeout(timer);
-		timer = window.setTimeout(function(){save()},time_to_save);
+		timer = window.setTimeout(function() {
+			save();
+		}, time_to_save);
 
 		console.log("Nibbleblog: Timer set");
 	}
 
-	function save()
-	{
+	function save() {
 		var data = serial_form($("#js_form"));
 
 		$("#js_button_save").removeClass().addClass("disabled");
@@ -55,8 +55,7 @@ $(document).ready(function() {
 		$.ajax({
 				url:"<?php echo $javascript['url']; ?>", type: "POST", cache: false, timeout: 15000, dataType: "xml", async: true,
 				data:{ serial_data: data, action:"<?php echo $action; ?>" },
-				success:function(xml)
-				{
+				success: function(xml) {
 					var text = $(xml).find("alert").text();
 
 					show_alert(text, 3500);

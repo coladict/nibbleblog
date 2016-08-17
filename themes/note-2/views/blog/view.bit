@@ -1,29 +1,25 @@
 <?php
 
 // There are no posts
-if(empty($posts))
-{
-	echo '<p>'.$Language->get('there are no posts').'</p>';
+if (empty($posts)) {
+	echo '<p>' . $Language->get('there are no posts') . '</p>';
 }
-else
-{
+else {
 	echo '<ul class="index">';
 	// Print each post
-	foreach($posts as $post)
-	{
+	foreach ($posts as $post) {
 		// Include the post link for each post
 ?>
 	<li>
-		<a href="<?php echo Post::permalink() ?>">
+		<a href="<?php echo Post::permalink(); ?>">
 			<?php
-			if($post['type']=='quote')
-			{
-				echo '<h2>'.$_LANG['QUOTE'].'</h2>';
+			if ($post['type'] == 'quote') {
+				echo '<h2>' . $_LANG['QUOTE'] . '</h2>';
 			}
 			?>
 				
-			<h2><?php echo Post::title() ?></h2>
-			<span class="meta"><?php echo Post::published() ?></span>
+			<h2><?php echo Post::title(); ?></h2>
+			<span class="meta"><?php echo Post::published(); ?></span>
 		</a>
 	</li>
 <?php
@@ -34,7 +30,7 @@ else
 
 ?>
 <div class="pager">
-	<?php echo Pager::next_link() ?>
-	<?php echo Pager::home_link() ?>
-	<?php echo Pager::prev_link() ?>
+	<?php echo Pager::next_link(); ?>
+	<?php echo Pager::home_link(); ?>
+	<?php echo Pager::prev_link(); ?>
 </div>

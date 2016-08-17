@@ -1,6 +1,5 @@
 <?php
-if( $Comment->disqus_enabled() )
-{
+if ($Comment->disqus_enabled()) {
 ?>
 
 <script type="text/javascript">
@@ -16,4 +15,3 @@ var disqus_shortname = "<?php echo $Comment->disqus_shortname() ?>";
 
 <?php
 }
-?>

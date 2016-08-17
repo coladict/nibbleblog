@@ -1,9 +1,7 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-	'NAME'=>'Vedligeholdelsestilstand',
-	'DESCRIPTION'=>'Sæt din blog i vedligeholdelsestilstand.',
-	'MESSAGE'=>'Besked'
+	'NAME' => 'Vedligeholdelsestilstand',
+	'DESCRIPTION' => 'Sæt din blog i vedligeholdelsestilstand.',
+	'MESSAGE' => 'Besked'
 );
-
-?>

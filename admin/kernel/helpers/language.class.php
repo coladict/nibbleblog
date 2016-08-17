@@ -13,33 +13,29 @@ class Language {
 
 	private $lang = array();
 
-	public function get($key)
-	{
+	public function get($key) {
 		$key = strtoupper($key);
 
-		$key = str_replace(' ','_',$key);
+		$key = str_replace(' ', '_', $key);
 
-		if(isset($this->lang[$key]))
+		if (isset($this->lang[$key])) {
 			return $this->lang[$key];
+		}
 
 		return '';
 	}
 
-	public function set($array)
-	{
+	public function set($array) {
 		// Set an array with all keys from array uppercased
 		$this->lang = array_change_key_case($array, CASE_UPPER);
 
 		return true;
 	}
 
-	public function add($array)
-	{
+	public function add($array) {
 		$this->lang = array_merge($this->lang, $array);
 
 		return true;
 	}
 
 }
-
-?>

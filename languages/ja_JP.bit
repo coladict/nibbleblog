@@ -325,5 +325,3 @@ $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'ブログの絶対アドレス(UR
 $_LANG['ABSOLUTE_ADDRESS_THAT_CONTAINS_THE_BLOGS_FILE_SYSTEM'] = 'ブログのシステムがある絶対アドレスを指定します。Nibbleblogを(ドメインの)ルートにアップロードしたならば "/"、そうではなく別のディレクトリならば "/directory/" となります。';
 
 $_LANG['COVER_ATTRIBUTE'] = 'カバー属性';
-
-?>

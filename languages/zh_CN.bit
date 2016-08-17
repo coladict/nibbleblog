@@ -285,5 +285,3 @@ $_LANG['CATEGORY_SLUG'] = '分类别名';
 $_LANG['ADVANCED_OPTIONS_WHEN_PUBLISHING_CONTENT'] = '当发布时显示高级选项';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = '您博客的绝对URL地址 例如http://www.domain.com/directory/';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = '有新插件可以安装';
-
-?>

@@ -11,13 +11,10 @@
 
 class Plugin {
 
-	public static function title()
-	{
+	public static function title() {
 		global $page;
 
 		return $page['title'];
 	}
 
 }
-
-?>

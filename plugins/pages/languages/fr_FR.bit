@@ -1,8 +1,6 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-	'NAME'=>'Pages',
-	'DESCRIPTION'=>'Afficher toutes les pages.'
+	'NAME' => 'Pages',
+	'DESCRIPTION' => 'Afficher toutes les pages.'
 );
-
-?>

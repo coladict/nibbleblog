@@ -285,5 +285,3 @@ $_LANG['INSTALLED_PLUGINS'] = 'Plugins instal·lats';
 $_LANG['PLUGINS_AVAILABLE_FOR_INSTALL'] = 'Plugins disponibles per instal·lar';
 $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'URL absoluta del teu bloc. Exemple http://www.domini.com/directori/';
 $_LANG['ABSOLUTE_ADDRESS_THAT_CONTAINS_THE_BLOGS_FILE_SYSTEM'] = 'Adreça absoluta que conté el sistema de fitxers del bloc, si carregues el contingut de Nibbleblog a l\'arrel només has de col·locar un "/", i si el puges a un altre directori, llavors ha de ser "/ directori /".';
-
-?>

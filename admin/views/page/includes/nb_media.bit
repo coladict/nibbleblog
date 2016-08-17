@@ -15,26 +15,28 @@ $file_list = Filesystem::get_images('*_nbmedia*');
 		</div>
 
 		<?php
-			if(!empty($file_list))
-			{
-				echo '<h2 class="title">'.$_LANG['SELECT_AN_IMAGE_FROM_YOUR_BAG'].'</h2>';
+			if (!empty($file_list)) {
+				echo '<h2 class="title">' . $_LANG['SELECT_AN_IMAGE_FROM_YOUR_BAG'] . '</h2>';
 				echo '<div id="mm_files">';
-				foreach($file_list as $file)
-				{
+				foreach ($file_list as $file) {
 					// Get the original file
-					$file_nbmedia = Text::replace('nbmedia','o',$file);
-					$info = pathinfo(PATH_UPLOAD.$file_nbmedia);
+					$file_nbmedia = Text::replace('nbmedia', 'o', $file);
+					$info = pathinfo(PATH_UPLOAD . $file_nbmedia);
 					$original = false;
 
-					if(file_exists(PATH_UPLOAD.$info['filename'].'.jpg'))
-						$original = $info['filename'].'.jpg';
-					elseif(file_exists(PATH_UPLOAD.$info['filename'].'.png'))
-						$original = $info['filename'].'.png';
-					elseif(file_exists(PATH_UPLOAD.$info['filename'].'.gif'))
-						$original = $info['filename'].'.gif';
+					if (file_exists(PATH_UPLOAD . $info['filename'].'.jpg')) {
+						$original = $info['filename'] . '.jpg';
+					}
+					else if (file_exists(PATH_UPLOAD . ['filename'].'.png')) {
+						$original = $info['filename'] . '.png';
+					}
+					else if (file_exists(PATH_UPLOAD . $info['filename'].'.gif')) {
+						$original = $info['filename'] . '.gif';
+					}
 
-					if($original)
-						echo '<img data-original="'.HTML_PATH_UPLOAD.$original.'" src="'.HTML_PATH_UPLOAD.$file.'">';
+					if ($original) {
+						echo '<img data-original="' . HTML_PATH_UPLOAD . $original . '" src="' . HTML_PATH_UPLOAD . $file . '">';
+					}
 				}
 				echo '</div>';
 			}
@@ -74,8 +76,7 @@ $(document).ready(function() {
 // From URL
 //======================================================================
 
-	$("#media_url_button").click(
-	function() {
+	$("#media_url_button").click(function() {
 		var url = $("#media_url_input").val();
 		var img = '<img src="'+url+'" alt="'+nb_media_alt.val()+'">';
 		insert_content(img);
@@ -87,8 +88,7 @@ $(document).ready(function() {
 // BAG
 //======================================================================
 
-	$("#mm_files").on("click", "img",
-	function() {
+	$("#mm_files").on("click", "img", function() {
 		var src = $(this).attr("data-original");
 		var img = '<img src="'+src+'" alt="'+nb_media_alt.val()+'">';
 		insert_content(img);
@@ -99,13 +99,11 @@ $(document).ready(function() {
 // Uploader
 //======================================================================
 
-	$("#media_upload_button").click(
-	function() {
+	$("#media_upload_button").click(function() {
 		media_input_file.trigger("click");
 	});
 
-	media_input_file.change(
-	function() {
+	media_input_file.change(function() {
 
 		var file = this.files[0];
 
@@ -118,30 +116,32 @@ $(document).ready(function() {
 			data: file,
 			processData: false,
 			contentType: file.type,
-			success: function(json)
-			{
+			success: function(json) {
 				$('#nb_media').trigger('reveal:close');
 
 				// Insert on textarea
-				var img = '<img src="'+json.original+'" alt="'+nb_media_alt.val()+'">';
+				var img = '<img src="' + json.original + '" alt="' + nb_media_alt.val() + '">';
 				insert_content(img);
 
 				// Insert on preview files
-				img = '<img data-original="'+json.original+'" src="'+json.nbmedia+'" alt="'+nb_media_alt.val()+'">';
+				img = '<img data-original="' + json.original + '" src="' + json.nbmedia + '" alt="' + nb_media_alt.val() + '">';
 				$("#mm_files").prepend(img);
 
 				nb_media_load.hide();
 				nb_media_wrap.show();
 			},
-			error: function(request,error)
-			{
-				nb_media_percent.html("Error: "+error+". Refresh the page please.");
+			error: function(request, error) {
+				nb_media_percent.html("Error: " + error + ". Refresh the page please.");
 			},
-			xhr: function()
-			{
+			xhr: function() {
 				var xhr = $.ajaxSettings.xhr();
-				xhr.upload.onprogress = function(evt){ var pct = evt.loaded/evt.total*100; nb_media_percent.width(pct+"%"); };
-				xhr.upload.onload = function(){ nb_media_percent.width("100%"); };
+				xhr.upload.onprogress = function(evt) {
+					var pct = evt.loaded/evt.total*100;
+					nb_media_percent.width(pct + "%");
+				};
+				xhr.upload.onload = function() {
+					nb_media_percent.width("100%");
+				};
 				return xhr;
 			}
 		});

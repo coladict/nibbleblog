@@ -14,8 +14,7 @@
 // =====================================================================
 $pages = $_DB_PAGES->get_all();
 
-foreach($pages as $key=>$value)
-{
+foreach ($pages as $key => $value) {
 	$page = $pages[$key];
 
 	// Publish date
@@ -34,25 +33,21 @@ foreach($pages as $key=>$value)
 $posts = array();
 
 // ---- POSTS FILTER BY CATEGORY
-if($url['category']!==null)
-{
+if ($url['category'] !== null) {
 	// Get the category ID
-	$category = $_DB_CATEGORIES->get_by_slug( array('slug'=>$url['category']) );
+	$category = $_DB_CATEGORIES->get_by_slug(array('slug' => $url['category']));
 
-	if($category!==false)
-	{
+	if ($category !== false) {
 		// Posts by category
-		$posts = $_DB_POST->get_list_by_category( array('page'=>0, 'amount'=>$settings['items_rss'], 'id_cat'=>$category['id']) );
+		$posts = $_DB_POST->get_list_by_category(array('page' => 0, 'amount' => $settings['items_rss'], 'id_cat' => $category['id']));
 	}
 }
-else
-{
-	$posts = $_DB_POST->get_list_by_page( array('page'=>0, 'amount'=>$settings['items_rss']) );
+else {
+	$posts = $_DB_POST->get_list_by_page(array('page' => 0, 'amount' => $settings['items_rss']));
 }
 
 // Recondition Posts
-foreach($posts as $key=>$value)
-{
+foreach ($posts as $key => $value) {
 	$post = $posts[$key];
 
 	// Category
@@ -73,5 +68,3 @@ foreach($posts as $key=>$value)
 // =====================================================================
 unset($post);
 unset($page);
-
-?>

@@ -1,6 +1,6 @@
 <?php
 
-echo Html::form_open( array('id'=>'js_form', 'name'=>'form', 'method'=>'post') );
+echo Html::form_open(array('id' => 'js_form', 'name' => 'form', 'method' => 'post'));
 
 	// TITLE
 	include('includes/title.bit');
@@ -11,7 +11,7 @@ echo Html::form_open( array('id'=>'js_form', 'name'=>'form', 'method'=>'post') )
 	// POSITION
 	include('includes/position.bit');
 
-	echo Html::separator( array('content'=>$_LANG['SEO_OPTIONS']), false, !$settings['advanced_post_options']);
+	echo Html::separator(array('content' => $_LANG['SEO_OPTIONS']), false, !$settings['advanced_post_options']);
 
 	// DESCRIPTION
 	include('includes/description.bit');
@@ -26,5 +26,3 @@ echo Html::form_open( array('id'=>'js_form', 'name'=>'form', 'method'=>'post') )
 	include('includes/buttons.bit');
 
 echo Html::form_close();
-
-?>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 <?php
 	// Charset, title, description, keywords, robots, etc
@@ -18,8 +18,7 @@
 	echo Blog::favicon();
 
 	// Plugins for <head></head>
-	foreach($plugins as $plugin)
-	{
+	foreach ($plugins as $plugin) {
 		echo $plugin->blog_head();
 	}
 ?>
@@ -30,9 +29,9 @@
 
 	<!-- HEADER -->
 	<header id="blog-head">
-		<a href="<?php echo Blog::url() ?>">
-			<span class="blog-name"><?php echo Blog::name() ?></span>
-			<span class="blog-slogan"><?php echo Blog::slogan() ?></span>
+		<a href="<?php echo Blog::url(); ?>">
+			<span class="blog-name"><?php echo Blog::name(); ?></span>
+			<span class="blog-slogan"><?php echo Blog::slogan(); ?></span>
 		</a>
 	</header>
 
@@ -41,14 +40,12 @@
 
 		<!-- PLUGINS -->
 		<?php
-			if(!empty($plugins))
-			{
+			if (!empty($plugins)) {
 				echo '<section id="sidebar">';
 
-				foreach($plugins_sidebar as $plugin)
-				{
-					echo '<div class="plugin-box '.$plugin->get_slug_name().'">';
-						echo '<h3 class="plugin-title">'.$plugin->database('title').'</h3>';
+				foreach ($plugins_sidebar as $plugin) {
+					echo '<div class="plugin-box ' . $plugin->get_slug_name() . '">';
+						echo '<h3 class="plugin-title">' . $plugin->database('title') . '</h3>';
 						echo $plugin->blog_body();
 					echo '</div>';
 				}
@@ -58,19 +55,24 @@
 		?>
 
 		<!-- VIEW -->
-		<section <?php if(!empty($plugins)) echo 'id=left' ?> >
-			<?php include(THEME_VIEWS.$layout['view']); ?>
+		<section<?php
+		if (!empty($plugins)) {
+			echo ' id="left"';
+		}
+		echo '>' . PHP_EOL;
+		include(THEME_VIEWS . $layout['view']);
+		?>
 		</section>
 
 	</section>
 
 	<!-- FOOTER -->
 	<footer id="blog-foot">
-		<span class="blog-atom"><a href="<?php echo $layout['feed'] ?>">Atom</a></span>
+		<span class="blog-atom"><a href="<?php echo $layout['feed']; ?>">Atom</a></span>
 		<span class="blog-footer"> · <a class="top" href="#">Top</a></span>
-		<span class="blog-footer"> · <?php echo Blog::footer() ?></span>
+		<span class="blog-footer"> · <?php echo Blog::footer(); ?></span>
 		<script>
-		$(".top").click(function(){
+		$(".top").click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 600);
 			return false;
 		});

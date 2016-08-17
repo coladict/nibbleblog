@@ -15,8 +15,7 @@
 	echo Blog::favicon();
 
 	// Plugins for <head></head>
-	foreach($plugins as $plugin)
-	{
+	foreach ($plugins as $plugin) {
 		echo $plugin->blog_head();
 	}
 ?>
@@ -24,10 +23,10 @@
 <body>
 
 	<header>
-		<img src="<?php echo HTML_THEME_IMG.'/logo.png' ?>">
-		<h1><a href="<?php echo Blog::url() ?>"><?php echo Blog::name() ?></a></h1>
-		<span class="slogan"><?php echo Blog::slogan() ?></span>
-		<a id="button" href="javascript:void(0)"><img src="<?php echo HTML_THEME_IMG.'/button.png' ?>"></a>
+		<img src="<?php echo HTML_THEME_IMG.'/logo.png'; ?>">
+		<h1><a href="<?php echo Blog::url(); ?>"><?php echo Blog::name(); ?></a></h1>
+		<span class="slogan"><?php echo Blog::slogan(); ?></span>
+		<a id="button" href="javascript:void(0)"><img src="<?php echo HTML_THEME_IMG . '/button.png'; ?>"></a>
 	</header>
 
 	<section class="main">
@@ -37,21 +36,17 @@
 			?>
 			<footer>
 				<p><a href="<?php echo $layout['feed'] ?>">Atom</a></p>
-				<p><?php echo Blog::footer() ?></p>
+				<p><?php echo Blog::footer(); ?></p>
 			</footer>
 		</div>
 
 		<aside id="sidebar">
 			<?php
-				if(!empty($plugins))
-				{
-
-					foreach($plugins as $plugin)
-					{
-						if($plugin->blog_body())
-						{
-							echo '<div class="plugin_box '.$plugin->get_slug_name().'">';
-								echo '<h3>'.$plugin->database('title').'</h3>';
+				if (!empty($plugins)) {
+					foreach ($plugins as $plugin) {
+						if ($plugin->blog_body()) {
+							echo '<div class="plugin_box ' . $plugin->get_slug_name() . '">';
+								echo '<h3>' . $plugin->database('title') . '</h3>';
 								echo $plugin->blog_body();
 							echo '</div>';
 						}

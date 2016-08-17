@@ -2,8 +2,8 @@
 
 	<h2 class="title">Nibbleblog Code</h2>
 	<?php
-		$lang_code = array('generic'=>'Generic', 'php'=>'PHP', 'ruby'=>'Ruby', 'go'=>'GO', 'haskell'=>'haskell', 'html'=>'HTML', 'javascript'=>'Javascript', 'python'=>'Python', 'shell'=>'Shell', 'c'=>'C', 'csharp'=>'C#', 'java'=>'Java', 'coffeescript'=>'Coffeescript', 'smalltalk'=>'Smalltalk', 'css'=>'CSS');
-		echo Html::select(array('id'=>'nb_code_options'), $lang_code, 'generic');
+		$lang_code = array('generic' => 'Generic', 'php' => 'PHP', 'ruby' => 'Ruby', 'go' => 'GO', 'haskell' => 'haskell', 'html' => 'HTML', 'javascript' => 'Javascript', 'python' => 'Python', 'shell' => 'Shell', 'c' => 'C', 'csharp' => 'C#', 'java' => 'Java', 'coffeescript' => 'Coffeescript', 'smalltalk' => 'Smalltalk', 'css' => 'CSS');
+		echo Html::select(array('id' => 'nb_code_options'), $lang_code, 'generic');
 	?>
 	<textarea id="nb_code_textarea"></textarea>
 	<div id="nb_code_button">Insert code</div>
@@ -34,8 +34,7 @@ $(document).ready(function() {
 	// Tab Keydown event
 	// Thanks http://stackoverflow.com/questions/6140632/how-to-handle-tab-in-textarea
 	$("#nb_code_textarea").keydown(function(e) {
-		if(e.keyCode === 9)
-		{
+		if (e.keyCode === 9) {
 			var start = this.selectionStart;
 			var end = this.selectionEnd;
 			var $this = $(this);

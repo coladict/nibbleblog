@@ -1,8 +1,6 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-	'NAME'=>'Hello world',
-	'DESCRIPTION'=>'Show hello world.'
+	'NAME' => 'Hello world',
+	'DESCRIPTION' => 'Show hello world.'
 );
-
-?>

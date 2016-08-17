@@ -14,19 +14,18 @@
 //	SYSTEM INFORMATION
 // =====================================================================
 define('NIBBLEBLOG_VERSION',		'4.0.5');
-define('NIBBLEBLOG_NAME',		'Espresso');
-define('NIBBLEBLOG_RELEASE_DATE',	'05/09/2015');
-define('NIBBLEBLOG_BUILD',		2392406953);
+define('NIBBLEBLOG_NAME',			'Espresso');
+define('NIBBLEBLOG_RELEASE_DATE',	'07/09/2015');
+define('NIBBLEBLOG_BUILD',			2392406954);
 
 // =====================================================================
 //	DEBUG
 // =====================================================================
-define('DEBUG_MODE',	TRUE);
+define('DEBUG_MODE',	FALSE);
 
 error_reporting(0);
 
-if(DEBUG_MODE)
-{
+if (DEBUG_MODE) {
 	ini_set("display_errors", 1);
 	ini_set('display_startup_errors',1);
 	ini_set("track_errors", 1);
@@ -35,5 +34,3 @@ if(DEBUG_MODE)
 }
 
 header('Content-Type: text/html; charset=utf-8');
-
-?>

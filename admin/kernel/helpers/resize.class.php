@@ -17,35 +17,30 @@ class Resize {
 	private $height;
 	private $imageResized;
 
-	public function setImage($fileName, $newWidth, $newHeight, $option="auto")
-	{
+	public function setImage($fileName, $newWidth, $newHeight, $option="auto") {
 		// *** Open up the file
 		$this->image = $this->openImage($fileName);
 
 		// *** Get width and height
-		$this->width  = imagesx($this->image);
+		$this->width = imagesx($this->image);
 		$this->height = imagesy($this->image);
 
 		$this->resizeImage($newWidth, $newHeight, $option);
 	}
 
-	public function saveImage($savePath, $imageQuality="100", $force_jpg=false)
-	{
+	public function saveImage($savePath, $imageQuality = "100", $force_jpg = false) {
 		$extension = strtolower(pathinfo($savePath, PATHINFO_EXTENSION));
 
 		// Remove the extension
-		$filename = substr($savePath, 0,strrpos($savePath,'.'));
+		$filename = substr($savePath, 0, strrpos($savePath, '.'));
 
 		$path_complete = $filename.'.'.$extension;
 
-		if($force_jpg)
-		{
-			imagejpeg($this->imageResized, $filename.'.jpg', $imageQuality);
+		if ($force_jpg) {
+			imagejpeg($this->imageResized, $filename . '.jpg', $imageQuality);
 		}
-		else
-		{
-			switch($extension)
-			{
+		else {
+			switch ($extension) {
 				case 'jpg':
 				case 'jpeg':
 					if (imagetypes() & IMG_JPG) {
@@ -80,13 +75,11 @@ class Resize {
 		imagedestroy($this->imageResized);
 	}
 
-	private function openImage($file)
-	{
+	private function openImage($file) {
 		// *** Get extension
 		$extension = strtolower(strrchr($file, '.'));
 
-		switch($extension)
-		{
+		switch ($extension) {
 			case '.jpg':
 			case '.jpeg':
 				$img = imagecreatefromjpeg($file);
@@ -104,12 +97,11 @@ class Resize {
 		return $img;
 	}
 
-	private function resizeImage($newWidth, $newHeight, $option)
-	{
+	private function resizeImage($newWidth, $newHeight, $option) {
 		// *** Get optimal width and height - based on $option
 		$optionArray = $this->getDimensions($newWidth, $newHeight, $option);
 
-		$optimalWidth  = $optionArray['optimalWidth'];
+		$optimalWidth = $optionArray['optimalWidth'];
 		$optimalHeight = $optionArray['optimalHeight'];
 
 
@@ -124,16 +116,13 @@ class Resize {
 		}
 	}
 
-	private function getDimensions($newWidth, $newHeight, $option)
-	{
+	private function getDimensions($newWidth, $newHeight, $option) {
 
-		if( ($this->width < $newWidth) and ($this->height < $newHeight) )
-		{
+		if (($this->width < $newWidth) and ($this->height < $newHeight)) {
 			return array('optimalWidth' => $this->width, 'optimalHeight' => $this->height);
 		}
 
-		switch ($option)
-		{
+		switch ($option) {
 			case 'exact':
 				$optimalWidth = $newWidth;
 				$optimalHeight= $newHeight;
@@ -161,44 +150,40 @@ class Resize {
 		return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
 	}
 
-	private function getSizeByFixedHeight($newHeight)
-	{
+	private function getSizeByFixedHeight($newHeight) {
 		$ratio = $this->width / $this->height;
 		$newWidth = $newHeight * $ratio;
 		return $newWidth;
 	}
 
-	private function getSizeByFixedWidth($newWidth)
-	{
+	private function getSizeByFixedWidth($newWidth) {
 		$ratio = $this->height / $this->width;
 		$newHeight = $newWidth * $ratio;
 		return $newHeight;
 	}
 
-	private function getSizeByAuto($newWidth, $newHeight)
-	{
-		if ($this->height < $this->width)
-		// *** Image to be resized is wider (landscape)
-		{
+	private function getSizeByAuto($newWidth, $newHeight) {
+		if ($this->height < $this->width) {
+			// *** Image to be resized is wider (landscape)
 			$optimalWidth = $newWidth;
 			$optimalHeight= $this->getSizeByFixedWidth($newWidth);
 		}
-		elseif ($this->height > $this->width)
-		// *** Image to be resized is taller (portrait)
-		{
+		else if ($this->height > $this->width) {
+			// *** Image to be resized is taller (portrait)
 			$optimalWidth = $this->getSizeByFixedHeight($newHeight);
 			$optimalHeight= $newHeight;
 		}
-		else
-		// *** Image to be resizerd is a square
-		{
+		else {
+			// *** Image to be resizerd is a square
 			if ($newHeight < $newWidth) {
 				$optimalWidth = $newWidth;
 				$optimalHeight= $this->getSizeByFixedWidth($newWidth);
-			} else if ($newHeight > $newWidth) {
+			}
+			else if ($newHeight > $newWidth) {
 				$optimalWidth = $this->getSizeByFixedHeight($newHeight);
 				$optimalHeight= $newHeight;
-			} else {
+			}
+			else {
 				// *** Sqaure being resized to a square
 				$optimalWidth = $newWidth;
 				$optimalHeight= $newHeight;
@@ -208,29 +193,28 @@ class Resize {
 		return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
 	}
 
-	private function getOptimalCrop($newWidth, $newHeight)
-	{
+	private function getOptimalCrop($newWidth, $newHeight) {
 
 		$heightRatio = $this->height / $newHeight;
-		$widthRatio  = $this->width /  $newWidth;
+		$widthRatio = $this->width / $newWidth;
 
 		if ($heightRatio < $widthRatio) {
 			$optimalRatio = $heightRatio;
-		} else {
+		}
+		else {
 			$optimalRatio = $widthRatio;
 		}
 
 		$optimalHeight = $this->height / $optimalRatio;
-		$optimalWidth  = $this->width  / $optimalRatio;
+		$optimalWidth = $this->width / $optimalRatio;
 
 		return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
 	}
 
-	private function crop($optimalWidth, $optimalHeight, $newWidth, $newHeight)
-	{
+	private function crop($optimalWidth, $optimalHeight, $newWidth, $newHeight) {
 		// *** Find center - this will be used for the crop
-		$cropStartX = ( $optimalWidth / 2) - ( $newWidth /2 );
-		$cropStartY = ( $optimalHeight/ 2) - ( $newHeight/2 );
+		$cropStartX = ( $optimalWidth / 2) - ( $newWidth /2);
+		$cropStartY = ( $optimalHeight/ 2) - ( $newHeight/2);
 
 		$crop = $this->imageResized;
 		//imagedestroy($this->imageResized);
@@ -241,4 +225,3 @@ class Resize {
 	}
 
 }
-?>

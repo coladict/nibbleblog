@@ -1,9 +1,7 @@
 <?php
 
 $_PLUGIN_CONFIG['LANG'] = array(
-	'NAME'=>'Sponsors',
-	'DESCRIPTION'=>'Agregue publicidad a su blog. Puede añadir publicidad de Google Adsense publicidad u otro patrocinador.',
-	'SPONSOR_CODE'=>'Codigo del patronicador'
+	'NAME' => 'Sponsors',
+	'DESCRIPTION' => 'Agregue publicidad a su blog. Puede añadir publicidad de Google Adsense publicidad u otro patrocinador.',
+	'SPONSOR_CODE' => 'Codigo del patronicador'
 );
-
-?>

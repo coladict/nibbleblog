@@ -14,8 +14,7 @@
 // =====================================================================
 $pages = $_DB_PAGES->get_all();
 
-foreach($pages as $key=>$value)
-{
+foreach ($pages as $key => $value) {
 	$page = $pages[$key];
 
 	$pages[$key]['permalink'] = Page::permalink();
@@ -26,13 +25,10 @@ foreach($pages as $key=>$value)
 // =====================================================================
 $posts = $_DB_POST->get_all();
 
-foreach($posts as $key=>$value)
-{
-
+foreach ($posts as $key => $value) {
 	$post = $posts[$key];
 
 	$posts[$key]['permalink'] = Post::permalink();
-
 }
 
 // =====================================================================
@@ -41,4 +37,3 @@ foreach($posts as $key=>$value)
 unset($post);
 unset($page);
 
-?>

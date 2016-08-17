@@ -10,7 +10,6 @@
  *
 */
 
-if($_DB_USERS->blacklist())
+if ($_DB_USERS->blacklist()) {
 	exit('Nibbleblog security error - Blacklist protection');
-
-?>
+}

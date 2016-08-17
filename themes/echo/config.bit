@@ -11,5 +11,3 @@ $theme = array
 	'url'=>'http://www.syndicatefx.com', // http://xxxxxxxxxxxxx
 	'version_supported'=>array('4.0', '4.0.1') // Nibbleblog version supported
 );
-
-?>

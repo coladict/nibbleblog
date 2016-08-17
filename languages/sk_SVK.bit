@@ -236,7 +236,7 @@ $_LANG['SITE'] = 'Stránka';
 $_LANG['SITE_TITLE'] = 'Nadpis stránky';
 $_LANG['SITE_DESCRIPTION'] = 'Popis stránky';
 $_LANG['TAGS_SEPARATED_BY_COMMA'] = 'Tagy oddelené čiarkou.';
-$_LANG['KEYWORDS_SEPARATED_BY_COMMA'] = 'Kĺúčové slová  oddelené čiarkou.';
+$_LANG['KEYWORDS_SEPARATED_BY_COMMA'] = 'Kĺúčové slová oddelené čiarkou.';
 $_LANG['ROBOTS'] = 'Robots';
 $_LANG['WEBMASTER_TOOLS'] = 'Webmaster tools';
 $_LANG['GOOGLE_WEBMASTER_TOOLS'] = 'Google Webmaster tools - overovací kód';
@@ -323,5 +323,3 @@ $_LANG['ABSOLUTE_URL_ADDRESS_OF_YOUR_BLOG'] = 'Absolute URL address of your blog
 $_LANG['ABSOLUTE_ADDRESS_THAT_CONTAINS_THE_BLOGS_FILE_SYSTEM'] = 'Absolute address that contains the blog\'s file system, if you upload the content of Nibbleblog to your root you should only put a "/", and if you upload it into another directory then it should be "/directory/".';
 
 $_LANG['COVER_ATTRIBUTE'] = 'Cover attribute';
-
-?>

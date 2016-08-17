@@ -1,7 +1,7 @@
 <?php
 
 // LEFT SIDE
-echo Html::div_open( array('class'=>'dashboard_left') );
+echo Html::div_open(array('class' => 'dashboard_left'));
 
 	// Quick start
 	include('quick_start.bit');
@@ -15,11 +15,9 @@ echo Html::div_open( array('class'=>'dashboard_left') );
 echo Html::div_close();
 
 // RIGHT SIDE
-echo Html::div_open( array('class'=>'dashboard_right') );
+echo Html::div_open(array('class' => 'dashboard_right'));
 
 	// Notifications
 	include('notifications.bit');
 
 echo Html::div_close();
-
-?>

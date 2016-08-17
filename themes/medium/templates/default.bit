@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="<?php echo Blog::language() ?>">
+<html lang="<?php echo Blog::language(); ?>">
 <head>
 <?php
 	// Charset, title, description, keywords, robots, etc
@@ -18,8 +18,7 @@
 	echo Blog::favicon();
 
 	// Plugins for <head></head>
-	foreach($plugins as $plugin)
-	{
+	foreach ($plugins as $plugin) {
 		echo $plugin->blog_head();
 	}
 ?>
@@ -28,35 +27,33 @@
 
 	<!-- POST -->
 	<section id="main">
-		<?php include(THEME_VIEWS.$layout['view']); ?>
+		<?php include(THEME_VIEWS . $layout['view']); ?>
 	</section>
 
 	<!-- PAGER - NEXT / PREVIUS POST -->
 	<section id="pager">
 		<?php
-			if($pager['next']!=false)
-			{
+			if ($pager['next'] != false) {
 				$post = $pager['next'];
 
-				echo '<a class="next-page" href="'.Post::permalink().'">'.Post::title().' →</a>';
+				echo '<a class="next-page" href="' . Post::permalink() . '">' . Post::title() . ' →</a>';
 			}
 
-			if($pager['prev']!=false)
-			{
+			if ($pager['prev'] != false) {
 				$post = $pager['prev'];
 
-				echo '<a class="prev-page" href="'.Post::permalink().'">← '.Post::title().'</a>';
+				echo '<a class="prev-page" href="' . Post::permalink() . '">← ' . Post::title() . '</a>';
 			}
 		?>
 	</section>
 
 	<!-- FOOTER -->
 	<footer id="blog-foot">
-		<span class="blog-atom"><a href="<?php echo $layout['feed'] ?>">Atom</a></span>
+		<span class="blog-atom"><a href="<?php echo $layout['feed']; ?>">Atom</a></span>
 		<span class="blog-footer"> · <a class="top" href="#">Top</a></span>
-		<span class="blog-footer"> · <?php echo Blog::footer() ?></span>
+		<span class="blog-footer"> · <?php echo Blog::footer(); ?></span>
 		<script>
-		$(".top").click(function(){
+		$(".top").click(function() {
 			$("html, body").animate({ scrollTop: 0 }, 600);
 			return false;
 		});
