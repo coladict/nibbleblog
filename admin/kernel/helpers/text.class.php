@@ -11,6 +11,20 @@
 
 class Text {
 
+	static $internal_is_utf8;
+
+	public static function init_utf_func() {
+		self::$internal_is_utf8 = strtolower(mb_internal_encoding()) == 'utf-8' || strtolower(mb_internal_encoding()) == 'utf8';
+	}
+
+	public static function optional_utf8_encode($str) {
+		return self::$internal_is_utf8 ? $str : utf8_encode($str);
+	}
+
+	public static function optional_utf8_decode($str) {
+		return self::$internal_is_utf8 ? $str : utf8_decode($str);
+	}
+
 	public static function unserialize($string) {
 		parse_str($string, $data);
 

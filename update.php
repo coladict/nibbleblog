@@ -347,14 +347,14 @@ $translit_enable = isset($_LANG['TRANSLIT']) ? $_LANG['TRANSLIT'] : false;
 
 				foreach ($obj->children() as $children) {
 					// Slug
-					$name = utf8_decode((string)$children->attributes()->name);
+					$name = Text::optional_utf8_decode((string)$children->attributes()->name);
 					$slug = Text::clean_url($name, '-', $translit_enable);
 					@$children->addAttribute('slug', '');
-					$children->attributes()->slug = utf8_encode($slug);
+					$children->attributes()->slug = Text::optional_utf8_encode($slug);
 
 					// Position
 					@$children->addAttribute('position', '');
-					$children->attributes()->position = utf8_encode($position);
+					$children->attributes()->position = Text::optional_utf8_encode($position);
 					$position++;
 				}
 
