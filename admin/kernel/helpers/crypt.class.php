@@ -20,7 +20,7 @@ class Crypt {
 			}
 		}
 
-		return('---');
+		return '---';
 	}
 
 	// return string
@@ -32,12 +32,12 @@ class Crypt {
 			}
 		}
 
-		return('---');
+		return '---';
 	}
 
 	public static function get_hash($string, $salt = '$#!') {
 		$sha1 = sha1($string.$salt);
 
-		return($sha1);
+		return $sha1;
 	}
 }

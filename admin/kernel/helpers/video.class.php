@@ -15,10 +15,10 @@ class Video {
 	// If the video does not exist or is invalid, returns false
 	public static function video_get_info($url, $width = 640, $height = 360) {
 		if (Text::is_substring($url, 'youtube.com')) {
-			return(self::video_get_youtube($url, $width, $height));
+			return self::video_get_youtube($url, $width, $height);
 		}
 		else if (Text::is_substring($url, 'vimeo.com')) {
-			return(self::video_get_vimeo($url, $width, $height));
+			return self::video_get_vimeo($url, $width, $height);
 		}
 
 		return false;
@@ -42,7 +42,7 @@ class Video {
 				. $video_id
 				. '?rel=0" frameborder="0" allowfullscreen></iframe>';
 
-		return($info);
+		return $info;
 	}
 
 	private static function video_get_vimeo($url, $width = 640, $height = 360) {
@@ -67,7 +67,7 @@ class Video {
 				. $video_id
 				. '" frameborder="0" allowFullScreen></iframe>';
 
-		return($info);
+		return $info;
 	}
 
 }

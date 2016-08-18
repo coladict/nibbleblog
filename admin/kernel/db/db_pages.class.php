@@ -250,7 +250,7 @@ class DB_PAGES {
 	 *
 	 */
 	public function get_last_insert_id() {
-		return($this->last_insert_id);
+		return $this->last_insert_id;
 	}
 
 	/*

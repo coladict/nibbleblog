@@ -220,7 +220,7 @@ class DB_TAGS {
 			}
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 

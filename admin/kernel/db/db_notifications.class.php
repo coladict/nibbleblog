@@ -41,7 +41,7 @@ PUBLIC METHODS
 ========================================================================
 */
 	public function savetofile() {
-		return($this->xml->asXML($this->file));
+		return $this->xml->asXML($this->file);
 	}
 
 	public function add($category, $send_email, $args = array()) {
@@ -140,7 +140,7 @@ PUBLIC METHODS
 
 			array_push($tmp_array, $row);
 		}
-		return(array_reverse($tmp_array));
+		return array_reverse($tmp_array);
 	}
 
 /*

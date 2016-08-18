@@ -39,7 +39,7 @@ PUBLIC METHODS
 */
 	// Returns TRUE if the file was written successfully and FALSE otherwise.
 	public function savetofile() {
-		return($this->xml->asXML($this->file));
+		return $this->xml->asXML($this->file);
 	}
 
 	public function get() {
@@ -99,7 +99,7 @@ PUBLIC METHODS
 		// Default homepage
 		$tmp_array['default_homepage']			= $this->xml->getChild('default_homepage');
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public function set($args) {
@@ -107,15 +107,15 @@ PUBLIC METHODS
 			$this->xml->setChild($name, $value);
 		}
 
-		return(true);
+		return true;
 	}
 
 	public function get_language() {
-		return((string) $this->xml->getChild('language'));
+		return (string) $this->xml->getChild('language');
 	}
 
 	public function get_base_path() {
-		return((string) $this->xml->getChild('path'));
+		return (string) $this->xml->getChild('path');
 	}
 
 	public function get_languages() {
@@ -130,7 +130,7 @@ PUBLIC METHODS
 			$tmp_array[$iso] = ucwords($native);
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public function get_themes() {

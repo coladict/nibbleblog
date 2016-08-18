@@ -21,19 +21,19 @@ class Validation {
 
 	public static function int($int) {
 		if ($int === 0) {
-			return(true);
+			return true;
 		}
 		else if (filter_var($int, FILTER_VALIDATE_INT) === false) {
-			return(false);
+			return false;
 		}
 		else {
-			return(true);
+			return true;
 		}
 	}
 
 	// Remove all characters except digits
 	public static function sanitize_float($value) {
-		return(filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_THOUSAND));
+		return filter_var($value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_THOUSAND);
 	}
 
 	// Valid an integer positive
@@ -49,16 +49,16 @@ class Validation {
 	}
 
 	public static function sanitize_email($value) {
-		return(filter_var($value, FILTER_SANITIZE_EMAIL));
+		return filter_var($value, FILTER_SANITIZE_EMAIL);
 	}
 
 	public static function sanitize_url($value) {
-		return(filter_var($value, FILTER_SANITIZE_URL));
+		return filter_var($value, FILTER_SANITIZE_URL);
 	}
 
 	// Convert all applicable characters to HTML entities incluye acentos
 	public static function sanitize_html($text) {
-		return(htmlspecialchars($text, ENT_QUOTES, 'UTF-8'));
+		return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 	}
 
 }

@@ -52,11 +52,11 @@ PUBLIC METHODS
 ======================================================================================
 */
 	public function savetofile() {
-		return($this->xml->asXML($this->file));
+		return $this->xml->asXML($this->file);
 	}
 
 	public function get_last_insert_id() {
-		return($this->last_insert_id);
+		return $this->last_insert_id;
 	}
 
 	/*
@@ -123,7 +123,7 @@ PUBLIC METHODS
 		$this->set_file($args['id']);
 
 		if ($this->files_count > 0) {
-			return($this->get_items($this->files[0]));
+			return $this->get_items($this->files[0]);
 		}
 
 		return false;
@@ -137,7 +137,7 @@ PUBLIC METHODS
 			array_push($tmp_array, $this->get_items($file));
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public function get_list_by_page($args) {
@@ -145,7 +145,7 @@ PUBLIC METHODS
 		$this->set_files();
 
 		if ($this->files_count > 0) {
-			return ($this->get_list_by($args['page_number'], $args['amount']));
+			return $this->get_list_by($args['page_number'], $args['amount']);
 		}
 
 		return array();
@@ -162,17 +162,17 @@ PUBLIC METHODS
 			array_push($tmp_array, $this->get_items($this->files[$i]));
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public function delete($args) {
 		$this->set_file($args['id']);
 
 		if ($this->files_count > 0) {
-			return(unlink(PATH_COMMENTS . $this->files[0]));
+			return unlink(PATH_COMMENTS . $this->files[0]);
 		}
 
-		return(false);
+		return false;
 	}
 
 	public function delete_all_by_post($args) {
@@ -184,7 +184,7 @@ PUBLIC METHODS
 	}
 
 	public function get_count() {
-		return($this->files_count);
+		return $this->files_count;
 	}
 
 	public function get_settings() {
@@ -199,7 +199,7 @@ PUBLIC METHODS
 		$tmp_array['disqus_shortname']		= $this->xml->getChild('disqus_shortname');
 		$tmp_array['facebook_appid']		= $this->xml->getChild('facebook_appid');
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public function set_settings($args) {
@@ -207,19 +207,19 @@ PUBLIC METHODS
 			$this->xml->setChild($name, $value);
 		}
 
-		return(true);
+		return true;
 	}
 
 	public function approve($args) {
-		return($this->rename_by_position($args['id'], 3, 'NULL'));
+		return $this->rename_by_position($args['id'], 3, 'NULL');
 	}
 
 	public function unapprove($args) {
-		return($this->rename_by_position($args['id'], 3, 'unapprove'));
+		return $this->rename_by_position($args['id'], 3, 'unapprove');
 	}
 
 	public function spam($args) {
-		return($this->rename_by_position($args['id'], 3, 'spam'));
+		return $this->rename_by_position($args['id'], 3, 'spam');
 	}
 
 /*
@@ -232,7 +232,7 @@ PRIVATE METHODS
 
 		// File not found
 		if ($this->files_count == 0) {
-			return(false);
+			return false;
 		}
 
 		$filename = $this->files[0];
@@ -241,11 +241,11 @@ PRIVATE METHODS
 		$explode[$position] = $string;
 		$implode = implode('.', $explode);
 
-		return(rename(PATH_COMMENTS . $filename, PATH_COMMENTS . $implode));
+		return rename(PATH_COMMENTS . $filename, PATH_COMMENTS . $implode);
 	}
 
 	private function get_autoinc() {
-		return((int) $this->xml['autoinc']);
+		return (int) $this->xml['autoinc'];
 	}
 
 	private function set_autoinc($value = 0) {
@@ -285,7 +285,7 @@ PRIVATE METHODS
 			}
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	// Return the items from a comment
@@ -318,7 +318,7 @@ PRIVATE METHODS
 
 		$tmp_array['pub_date']			= Date::format($tmp_array['pub_date_unix'], $this->settings['timestamp_format']);
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 } // END Class

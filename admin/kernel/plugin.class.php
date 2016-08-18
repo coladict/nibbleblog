@@ -38,7 +38,7 @@ class Plugin {
 
 	public function install($position = 0) {
 		if (!mkdir(PATH_PLUGINS_DB . $this->dir_name, 0777, true)) {
-			return(false);
+			return false;
 		}
 
 		// Template
@@ -64,10 +64,10 @@ class Plugin {
 		}
 
 		if (!$new_obj->asXml(PATH_PLUGINS_DB . $this->dir_name . '/db.xml')) {
-			return(false);
+			return false;
 		}
 
-		return(true);
+		return true;
 	}
 
 	public function uninstall() {
@@ -83,17 +83,17 @@ class Plugin {
 	}
 
 	public function is_installed() {
-		return(file_exists(PATH_PLUGINS_DB . $this->dir_name . '/db.xml'));
+		return file_exists(PATH_PLUGINS_DB . $this->dir_name . '/db.xml');
 	}
 
 	public function init_db() {
 		if ($this->is_installed()) {
 			$this->db = new NBXML(PATH_PLUGINS_DB . $this->dir_name . '/db.xml', 0, TRUE, '', FALSE);
 
-			return(true);
+			return true;
 		}
 
-		return(false);
+		return false;
 	}
 
 	public function database($field) {
@@ -112,10 +112,10 @@ class Plugin {
 		}
 
 		if (!$this->db->asXml(PATH_PRIVATE . 'plugins/' . $this->dir_name . '/db.xml')) {
-			return(false);
+			return false;
 		}
 
-		return(true);
+		return true;
 	}
 
 	public function set_slug_name($name) {
@@ -126,7 +126,7 @@ class Plugin {
 	}
 
 	public function get_slug_name() {
-		return($this->slug_name);
+		return $this->slug_name;
 	}
 
 	public function set_attributes($args) {
@@ -138,27 +138,27 @@ class Plugin {
 	}
 
 	public function get_name() {
-		return($this->name);
+		return $this->name;
 	}
 
 	public function get_description() {
-		return($this->description);
+		return $this->description;
 	}
 
 	public function get_author() {
-		return($this->author);
+		return $this->author;
 	}
 
 	public function get_version() {
-		return($this->version);
+		return $this->version;
 	}
 
 	public function get_url() {
-		return($this->url);
+		return $this->url;
 	}
 
 	public function get_dir_name() {
-		return($this->dir_name);
+		return $this->dir_name;
 	}
 
 	public function set_lang($array) {
@@ -168,10 +168,10 @@ class Plugin {
 	// DEPRECATED
 	public function language($key) {
 		if (isset($this->_LANG[$key])) {
-			return($this->_LANG[$key]);
+			return $this->_LANG[$key];
 		}
 
-		return('');
+		return '';
 	}
 
 	public function boot() {

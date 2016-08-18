@@ -13,10 +13,10 @@ class Cookie {
 
 	public static function get($name) {
 		if (isset($_COOKIE[$name])) {
-			return($_COOKIE[$name]);
+			return $_COOKIE[$name];
 		}
 
-		return(false);
+		return false;
 	}
 
 	public static function add($name, $value, $expire = 525600) {
@@ -24,7 +24,7 @@ class Cookie {
 	}
 
 	public static function is_set($name) {
-		return(isset($_COOKIE[$name]));
+		return isset($_COOKIE[$name]);
 	}
 
 }

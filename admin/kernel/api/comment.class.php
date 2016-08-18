@@ -101,7 +101,7 @@ class Comment {
 	public function get($id) {
 		$comment = $this->db->get(array('id' => $id));
 
-		return($comment);
+		return $comment;
 	}
 
 	// Returns an array if there are comments in the system
@@ -109,7 +109,7 @@ class Comment {
 	public function get_by_page($page, $amount) {
 		$comments = $this->db->get_list_by_page(array('page_number' => $page, 'amount' => $amount));
 
-		return($comments);
+		return $comments;
 	}
 
 	// Returns an array if there are comments in the post
@@ -117,7 +117,7 @@ class Comment {
 	public function get_by_post($id_post) {
 		$comments = $this->db->get_list_by_post(array('id_post' => $id_post));
 
-		return($comments);
+		return $comments;
 	}
 
 	// Returns an array if there are comments
@@ -125,12 +125,12 @@ class Comment {
 	public function get_last($amount) {
 		$comments = $this->db->get_last(array('amount' => $amount));
 
-		return($comments);
+		return $comments;
 	}
 
 	// Return an array with the comments settings
 	public function get_settings() {
-		return($this->db->get_settings());
+		return $this->db->get_settings();
 	}
 
 	public function disqus_shortname() {
@@ -196,7 +196,7 @@ class Comment {
 			$safe[$key] = Validation::sanitize_html($value);
 		}
 
-		return($safe);
+		return $safe;
 	}
 
 	private function get_spam_level($content) {
@@ -206,7 +206,7 @@ class Comment {
 
 				// Invalid API KEY
 				if (array_shift($defensio->getUser()) != 200) {
-					return(false);
+					return false;
 				}
 
 				$document = array(
@@ -219,16 +219,16 @@ class Comment {
 
 				$defensio_result = $defensio->postDocument($document);
 
-				return((float)$defensio_result[1]->spaminess);
+				return (float)$defensio_result[1]->spaminess;
 			}
 			catch (Exception $e) {
 				// Something fail, timeout, invalid key, etc...
-				return(false);
+				return false;
 			}
 		}
 
 		// Spam monitor disabled
-		return(0);
+		return 0;
 	}
 
 } // END Class

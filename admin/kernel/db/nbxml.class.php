@@ -51,7 +51,7 @@ class NBXML extends SimpleXMLElement {
 	}
 
 	public function getAttribute($name) {
-		return(Text::optional_utf8_decode((string)$this->attributes()->{$name}));
+		return Text::optional_utf8_decode((string)$this->attributes()->{$name});
 	}
 
 	public function setChild($name, $value) {

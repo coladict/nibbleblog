@@ -203,14 +203,14 @@ class Login {
 // =================================================================
 	public function get_user_id() {
 		if (isset($_SESSION['session_login']['id'])) {
-			return($_SESSION['session_login']['id']);
+			return $_SESSION['session_login']['id'];
 		}
 		return false;
 	}
 
 	public function get_username() {
 		if (isset($_SESSION['session_login']['username'])) {
-			return($_SESSION['session_login']['username']);
+			return $_SESSION['session_login']['username'];
 		}
 		return false;
 	}

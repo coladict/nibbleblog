@@ -32,7 +32,7 @@ class Net {
 			$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 			curl_close($curl);
 
-			return($http_code == $code);
+			return $http_code == $code;
 		}
 
 		// If curl is not installed, use get_headers

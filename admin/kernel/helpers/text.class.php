@@ -33,7 +33,7 @@ class Text {
 			$data = self::clean_magic_quotes($data);
 		}
 
-		return($data);
+		return $data;
 	}
 
 	public static function ajax_header($tmp) {
@@ -41,7 +41,7 @@ class Text {
 		$xml .= '<ajax>';
 		$xml .= $tmp;
 		$xml .= '</ajax>';
-		return($xml);
+		return $xml;
 	}
 
 	// Clean magic quotes
@@ -51,11 +51,11 @@ class Text {
 			$tmp_array[$key] = stripslashes($arg);
 		}
 
-		return($tmp_array);
+		return $tmp_array;
 	}
 
 	public static function cut_text($text, $maxlength) {
-		return(substr($text, 0, strrpos(substr($text, 0, $maxlength), " ")));
+		return substr($text, 0, strrpos(substr($text, 0, $maxlength), " "));
 	}
 
 	public static function cut_words($text, $count) {
@@ -66,24 +66,24 @@ class Text {
 			$text = implode(' ', $explode);
 		}
 
-		return($text);
+		return $text;
 	}
 
 	// Strip spaces
 	public static function replace($search, $replace, $string) {
-		return(str_replace($search, $replace, $string));
+		return str_replace($search, $replace, $string);
 	}
 
 	// Strip spaces
 	public static function strip_spaces($string) {
-		return(str_replace(' ', '', $string));
+		return str_replace(' ', '', $string);
 	}
 
 	// Strip quotes ' and "
 	public static function strip_quotes($text) {
 		$text = str_replace('\'', '', $text);
 		$text = str_replace('"', '', $text);
-		return($text);
+		return $text;
 	}
 
 	function clean_non_alphanumeric($string) {
@@ -96,25 +96,25 @@ class Text {
 	// TRUE - si contiene el substring
 	// FALSE - caso contrario
 	public static function is_substring($string, $substring) {
-		return(strpos($string, $substring) !== false);
+		return strpos($string, $substring) !== false;
 	}
 
 	// RETURN
 	// TRUE - is not empty
 	// FALSE - is empty
 	public static function not_empty($string) {
-		return(!self::is_empty($string));
+		return !self::is_empty($string);
 	}
 
 	public static function is_empty($string) {
 		$string = self::strip_spaces($string);
-		return(empty($string));
+		return empty($string);
 	}
 
 	// Compara 2 cadenas
 	// Retorna TRUE si son iguales, FALSE caso contrario
 	public static function compare($value1, $value2) {
-		return(strcmp($value1, $value2) == 0);
+		return strcmp($value1, $value2) == 0;
 	}
 
 	// Clean text for URL

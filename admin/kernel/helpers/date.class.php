@@ -24,7 +24,7 @@ class Date {
 	}
 
 	public static function set_timezone($string) {
-		return(date_default_timezone_set($string));
+		return date_default_timezone_set($string);
 	}
 
 	// Return array('Africa/Abidjan' => 'Africa/Abidjan (GMT+0)', ..., 'Pacific/Wallis' => 'Pacific/Wallis (GMT+12)');
@@ -49,32 +49,32 @@ class Date {
 			$tmp[$timezone_identifier] = $text . ' (' . $hours . ':' . $mins . ')';
 		}
 
-		return($tmp);
+		return $tmp;
 	}
 
 	// Time GMT
 	public static function unixstamp() {
-		return(time());
+		return time();
 	}
 
 	// Format a local time/date according to locale settings
 	public static function format($time, $format) {
 		$date = strftime($format, $time);
 
-		return($date);
+		return $date;
 	}
 
 	// Format a GMT/UTC+0 date/time
 	public static function format_gmt($time, $format) {
 		$date = gmdate($format, $time);
 
-		return($date);
+		return $date;
 	}
 
 	public static function atom($time) {
 		$date = date(DATE_ATOM, $time);
 
-		return($date);
+		return $date;
 	}
 
 }

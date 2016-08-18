@@ -12,6 +12,6 @@
 class Number {
 
 	public static function random_number($min, $max) {
-		 return(rand($min, $max));
+		 return rand($min, $max);
 	}
 }

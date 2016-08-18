@@ -47,7 +47,7 @@ class Session {
 	public static function validFormToken($token) {
 		$sessionToken = self::getFormToken();
 
-		return(!empty($sessionToken) && ($sessionToken===$token));
+		return !empty($sessionToken) && ($sessionToken===$token);
 	}
 
 	public static function printFormToken() {
@@ -56,7 +56,7 @@ class Session {
 
 	public static function get_error() {
 		if (isset($_SESSION['nibbleblog']['error'])) {
-			return($_SESSION['nibbleblog']['error']);
+			return $_SESSION['nibbleblog']['error'];
 		}
 
 		return false;
@@ -64,7 +64,7 @@ class Session {
 
 	public static function get_last_comment_at() {
 		if (isset($_SESSION['nibbleblog']['last_comment_at'])) {
-			return($_SESSION['nibbleblog']['last_comment_at']);
+			return $_SESSION['nibbleblog']['last_comment_at'];
 		}
 
 		return false;
@@ -72,7 +72,7 @@ class Session {
 
 	public static function get_last_session_at() {
 		if (isset($_SESSION['nibbleblog']['last_session_at'])) {
-			return($_SESSION['nibbleblog']['last_session_at']);
+			return $_SESSION['nibbleblog']['last_session_at'];
 		}
 
 		return false;
@@ -80,7 +80,7 @@ class Session {
 
 	public static function get_fail_session() {
 		if (isset($_SESSION['nibbleblog']['fail_session'])) {
-			return($_SESSION['nibbleblog']['fail_session']);
+			return $_SESSION['nibbleblog']['fail_session'];
 		}
 
 		return false;
@@ -100,7 +100,7 @@ class Session {
 
 	public static function get_alert() {
 		self::set_error(false);
-		return($_SESSION['nibbleblog']['alert']);
+		return $_SESSION['nibbleblog']['alert'];
 	}
 
 	public static function set_error($boolean = true) {

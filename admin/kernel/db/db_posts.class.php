@@ -60,7 +60,7 @@ class DB_POSTS {
 	 *
 	 */
 	public function get_last_insert_id() {
-		return($this->last_insert_id);
+		return $this->last_insert_id;
 	}
 
 	/*
@@ -517,12 +517,12 @@ class DB_POSTS {
 
 			// File not found
 			if ($this->files_count == 0) {
-				return(false);
+				return false;
 			}
 
 			$filename = $this->files[0];
 
-			return(rename(PATH_POSTS . $filename, PATH_POSTS . $rename));
+			return rename(PATH_POSTS . $filename, PATH_POSTS . $rename);
 		}
 
 		private function rename_by_position($id, $position, $string) {
@@ -530,7 +530,7 @@ class DB_POSTS {
 
 			// File not found
 			if ($this->files_count == 0) {
-				return(false);
+				return false;
 			}
 
 			$filename = $this->files[0];
@@ -539,7 +539,7 @@ class DB_POSTS {
 			$explode[$position] = $string;
 			$implode = implode('.', $explode);
 
-			return(rename(PATH_POSTS . $filename, PATH_POSTS . $implode));
+			return rename(PATH_POSTS . $filename, PATH_POSTS . $implode);
 		}
 
 		private function set_autoinc($value = 0) {
@@ -634,7 +634,7 @@ class DB_POSTS {
 				$tmp_array['quote']			= (string) $xml->getChild('quote');
 			}
 
-			return($tmp_array);
+			return $tmp_array;
 		}
 
 		private function get_list_by($page_number, $post_per_page) {
@@ -651,7 +651,7 @@ class DB_POSTS {
 				}
 			}
 
-			return($tmp_array);
+			return $tmp_array;
 		}
 
 		/*
