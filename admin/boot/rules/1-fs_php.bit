@@ -28,12 +28,10 @@ $session_started = session_start();
 // =====================================================================
 $current_path = basename(getcwd());
 if (($current_path == 'ajax') || ($current_path == 'js')) {
-	define('PATH_ROOT', '../../');
-	define('PATH_CONTENT', '../../content/');
+	define('PATH_CONTENT', PATH_ROOT . 'content/');
 }
 else {
-	define('PATH_ROOT', './');
-	define('PATH_CONTENT', './content/');
+	define('PATH_CONTENT', PATH_ROOT . 'content/');
 }
 
 // PHP - ADMIN

@@ -42,7 +42,7 @@ class DB_USERS {
 		$ip = Net::get_user_ip();
 		$current_time = time();
 
-		$node = $this->xml->xpath('/users/blacklist[@ip="' . Text::optional_utf8_encode($ip) . '"]');
+		$node = $this->xml->xpath('/users/blacklist[@ip="' . $ip . '"]');
 
 		// IP dosen't exist
 		if (empty($node)) {
@@ -70,7 +70,7 @@ class DB_USERS {
 		$ip = Net::get_user_ip();
 		$current_time = time();
 
-		$node = $this->xml->xpath('/users/blacklist[@ip="' . Text::optional_utf8_encode($ip) . '"]');
+		$node = $this->xml->xpath('/users/blacklist[@ip="' . $ip . '"]');
 
 		// IP dosen't exist
 		if (empty($node)) {
@@ -115,7 +115,7 @@ class DB_USERS {
 
 
 	public function add($args) {
-		$node = $this->xml->xpath('/users/user[@username="' . Text::optional_utf8_encode($args['username']) . '"]');
+		$node = $this->xml->xpath('/users/user[@username="' . $args['username'] . '"]');
 
 		if (empty($node)) {
 			return false;
@@ -136,7 +136,7 @@ class DB_USERS {
 	}
 
 	public function get($args) {
-		$node = $this->xml->xpath('/users/user[@username="' . Text::optional_utf8_encode($args['username']) . '"]');
+		$node = $this->xml->xpath('/users/user[@username="' . $args['username'] . '"]');
 
 		if ($node == array()) {
 			return false;
@@ -151,7 +151,7 @@ class DB_USERS {
 	}
 
 	public function set($args) {
-		$node = $this->xml->xpath('/users/user[@username="' . Text::optional_utf8_encode($args['username']) . '"]');
+		$node = $this->xml->xpath('/users/user[@username="' . $args['username'] . '"]');
 
 		if ($node == array()) {
 			return false;
@@ -167,7 +167,7 @@ class DB_USERS {
 	}
 
 	public function is_valid($args) {
-		return $this->xml->xpath('/users/user[@username="' . Text::optional_utf8_encode($args['username']) . '"]') != array();
+		return $this->xml->xpath('/users/user[@username="' . $args['username'] . '"]') != array();
 	}
 
 	public function savetofile() {

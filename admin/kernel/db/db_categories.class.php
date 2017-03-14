@@ -42,7 +42,7 @@ PUBLIC METHODS
 	}
 
 	public function add($args) {
-		$tmp_node = $this->xml->xpath('/categories/category[@name="' . Text::optional_utf8_encode($args['name']) . '"]');
+		$tmp_node = $this->xml->xpath('/categories/category[@name="' . $args['name'] . '"]');
 
 		if ($tmp_node == array()) {
 			$new_node = $this->xml->addChild('category', '');
@@ -66,9 +66,9 @@ PUBLIC METHODS
 			return false;
 		}
 
-		$node[0]->attributes()->name = Text::optional_utf8_encode($args['name']);
-		$node[0]->attributes()->slug = Text::optional_utf8_encode($args['slug']);
-		$node[0]->attributes()->position = Text::optional_utf8_encode($args['position']);
+		$node[0]->attributes()->name = $args['name'];
+		$node[0]->attributes()->slug = $args['slug'];
+		$node[0]->attributes()->position = $args['position'];
 
 		return $this->savetofile();
 	}
@@ -109,7 +109,7 @@ PUBLIC METHODS
 	}
 
 	public function get_by_slug($args) {
-		$node = $this->xml->xpath('/categories/category[@slug="' . Text::optional_utf8_encode($args['slug']) . '"]');
+		$node = $this->xml->xpath('/categories/category[@slug="' . $args['slug'] . '"]');
 
 		// Category not found
 		if ($node == array()) {

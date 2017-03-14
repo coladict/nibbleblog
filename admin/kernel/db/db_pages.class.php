@@ -188,7 +188,7 @@ class DB_PAGES {
 	 */
 	public function get($args) {
 		if (isset($args['slug'])) {
-			$where = '@slug="' . Text::optional_utf8_encode($args['slug']) . '"';
+			$where = '@slug="' . $args['slug'] . '"';
 			$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
 			if ($node == array()) {
@@ -336,7 +336,7 @@ PRIVATE METHODS
 	 *
 	 */
 	private function slug_get($id) {
-		$where = '@id="' . Text::optional_utf8_encode($id) . '"';
+		$where = '@id="' . $id . '"';
 		$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
 		if ($node == array()) {
@@ -375,7 +375,7 @@ PRIVATE METHODS
 	 *
 	 */
 	private function slug_exists($slug) {
-		$where = '@slug="' . Text::optional_utf8_encode($slug) . '"';
+		$where = '@slug="' . $slug . '"';
 		$node = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
 		if ($node == array()) {
@@ -405,7 +405,7 @@ PRIVATE METHODS
 	 *
 	 */
 	private function slug_delete($id) {
-		$where = '@id="' . Text::optional_utf8_encode($id) . '"';
+		$where = '@id="' . $id . '"';
 		$nodes = $this->xml->xpath('/pages/friendly/url[' . $where . ']');
 
 		foreach ($nodes as $node) {

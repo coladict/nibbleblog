@@ -13,8 +13,6 @@ class NBXML extends SimpleXMLElement {
 
 	// Private keys = array('username' => 'diego');
 	public function addGodChild($name, $private_key) {
-		$name = Text::optional_utf8_encode($name);
-
 		// Add and scape &
 		$node = parent::addChild($name);
 		$node[0] = ''; // (BUG) Con esta forma escapamos el & que no escapa el addChild
@@ -30,9 +28,6 @@ class NBXML extends SimpleXMLElement {
 		// Get type of the value will be insert
 		$type	= gettype($value);
 
-		$name = Text::optional_utf8_encode($name);
-		$value = Text::optional_utf8_encode($value);
-
 		// Add and scape &
 		$node = parent::addChild($name);
 		$node[0] = $value; // (BUG) Con esta forma escapamos el & que no escapa el addChild
@@ -44,19 +39,16 @@ class NBXML extends SimpleXMLElement {
 	}
 
 	public function addAttribute($name, $value='', $namespace='') {
-		$name = Text::optional_utf8_encode($name);
-		$value = Text::optional_utf8_encode($value);
-
 		return parent::addAttribute($name, $value);
 	}
 
 	public function getAttribute($name) {
-		return Text::optional_utf8_decode((string)$this->attributes()->{$name});
+		return (string)$this->attributes()->{$name};
 	}
 
 	public function setChild($name, $value) {
 		if (isset($this->{$name})) {
-			$this->{$name} = Text::optional_utf8_encode($value);
+			$this->{$name} = $value;
 		}
 
 		return false;
@@ -64,7 +56,7 @@ class NBXML extends SimpleXMLElement {
 
 	public function getChild($name) {
 		$type = @$this->{$name}->getAttribute('type');
-		$value = Text::optional_utf8_decode((string)$this->{$name});
+		$value = (string)$this->{$name};
 
 		return empty($type) ? $value : $this->cast($type, $value);
 	}

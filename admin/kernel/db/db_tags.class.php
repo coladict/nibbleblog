@@ -59,9 +59,9 @@ class DB_TAGS {
 	// Link a tag with a post
 	public function link($args) {
 		$node = $this->xml->xpath('/tags/links/link[@id_tag="'
-				. Text::optional_utf8_encode($args['id_tag'])
+				. $args['id_tag']
 				. '" and @id_post="'
-				. Text::optional_utf8_encode($args['id_post'])
+				. $args['id_post']
 				. '"]');
 
 		// id tag and id post are ready linked
@@ -78,10 +78,10 @@ class DB_TAGS {
 	// Get tag information, by ID or by name
 	public function get($args) {
 		if (isset($args['name'])) {
-			$where = '@name="' . Text::optional_utf8_encode($args['name']) . '"';
+			$where = '@name="' . $args['name'] . '"';
 		}
 		else if (isset($args['id'])) {
-			$where = '@id="' . Text::optional_utf8_encode($args['id']) . '"';
+			$where = '@id="' . $args['id'] . '"';
 		}
 
 		$node = $this->xml->xpath('/tags/list/tag[' . $where . ']');
@@ -111,7 +111,7 @@ class DB_TAGS {
 
 	// Get tags by post ID
 	public function get_by_idpost($args) {
-		$nodes = $this->xml->xpath('/tags/links/link[@id_post="' . Text::optional_utf8_encode($args['id_post']) . '"]');
+		$nodes = $this->xml->xpath('/tags/links/link[@id_post="' . $args['id_post'] . '"]');
 
 		$tmp = array();
 
@@ -140,7 +140,7 @@ class DB_TAGS {
 
 	// Delete all links
 	public function delete_links($args) {
-		$nodes = $this->xml->xpath('/tags/links/link[@id_post="' . Text::optional_utf8_encode($args['id_post']) . '"]');
+		$nodes = $this->xml->xpath('/tags/links/link[@id_post="' . $args['id_post'] . '"]');
 
 		foreach ($nodes as $node) {
 			$dom = dom_import_simplexml($node);
@@ -158,7 +158,7 @@ class DB_TAGS {
 			return false;
 		}
 
-		$nodes = $this->xml->xpath('/tags/links/link[@id_tag="' . Text::optional_utf8_encode($id_tag) . '"]');
+		$nodes = $this->xml->xpath('/tags/links/link[@id_tag="' . $id_tag . '"]');
 
 		$tmp = array();
 

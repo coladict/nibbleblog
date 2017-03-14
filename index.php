@@ -15,6 +15,9 @@ if (!file_exists('content/private')) {
 	exit('<a href="./install.php">click to install Nibbleblog</a>');
 }
 
+$current_path = dirname(realpath(__FILE__)) . '/';
+define('PATH_ROOT', $current_path);
+
 // Boot
 require('admin/boot/blog.bit');
 

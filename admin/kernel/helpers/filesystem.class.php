@@ -23,7 +23,7 @@ class Filesystem {
 	// $sort_asc_numeric : ordeno ascedente numerico
 	// $sort_desc_numeric : ordeno descendente numerico
 	public static function ls($path, $file_expression = NULL, $ext = '*', $flag_dir = false, $sort_asc_numeric = false, $sort_desc_numeric = true) {
-		$files = glob($path . $file_expression, ($flag_dir ? GLOB_ONLYDIR : $ext));
+		$files = glob($path . $file_expression . '*' . $ext, ($flag_dir ? GLOB_ONLYDIR : 0));
 
 		if (($files == false) || (empty($files))) {
 			$files = array();
