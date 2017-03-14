@@ -83,7 +83,7 @@ $category = array();
 $tag = array();
 
 // ---- POSTS FILTER BY CATEGORY
-if ($url['category']! == null) {
+if ($url['category'] !== null) {
 	// Get the category ID
 	$category = $_DB_CATEGORIES->get_by_slug(array('slug' => $url['category']));
 
